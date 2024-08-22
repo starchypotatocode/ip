@@ -7,7 +7,7 @@ public class Kai {
                 "\t |   <  / _ \\ | |\n" +
                 "\t |_|\\_\\/_/ \\_\\___|";
         System.out.println("\t Hello! I'm \n" + logo);
-        System.out.tprintln("\t What can I do for you?");
+        System.out.println("\t What can I do for you?");
 
         Scanner sc = new Scanner(System.in);
         String[] tasks = new String[100];
