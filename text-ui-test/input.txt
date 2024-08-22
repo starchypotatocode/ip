@@ -1,0 +1,14 @@
+mark
+unmark
+todo
+event
+deadline
+meow
+
+mark 1
+unmark 1
+event 1
+deadline 1
+event /from /to
+event /from  /to
+deadline /by

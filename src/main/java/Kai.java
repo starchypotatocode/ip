@@ -64,7 +64,7 @@ public class Kai {
                     System.out.println("\t Task Added:");
                     System.out.println("\t \t " + tasks.get(tasks.size() - 1).toString());
                     System.out.println("\t " + "There is now " + tasks.size() + " task(s) in the list.");
-                } catch (IllegalArgumentException e) {
+                } catch (IllegalArgumentException | StringIndexOutOfBoundsException e) {
                     System.out.println("\t Invalid task input, please check how you formatted it and try again.");
                 }
             } else {
