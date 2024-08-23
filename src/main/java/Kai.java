@@ -19,11 +19,7 @@ public class Kai {
             else if (input.equals("list")) {
                 try {
                     if (tasks.isEmpty()) {
-<<<<<<< HEAD
                         throw new KaiException("\t There are no tasks to list. Congratulations!");
-=======
-                        throw new KaiException("\t Ther are no tasks to list. Congratulations!");
->>>>>>> 10fe418c80e78f9a68d6c2d957c01e7ea1a4eafa
                     } else {
                         System.out.println("\t Here are the tasks in your list:");
                     }
@@ -63,7 +59,6 @@ public class Kai {
                     System.out.println("\t The task number specified is invalid, please retry.");
                 } catch (KaiException e) {
                     System.out.println(e.getMessage());
-<<<<<<< HEAD
                 }
             } else if (input.startsWith("delete ")) {
                 try {
@@ -80,8 +75,6 @@ public class Kai {
                     System.out.println("\t The task number specified is invalid, please retry.");
                 } catch (KaiException e) {
                     System.out.println(e.getMessage());
-=======
->>>>>>> 10fe418c80e78f9a68d6c2d957c01e7ea1a4eafa
                 }
             } else if (!input.isEmpty()) {
                 try {
@@ -108,13 +101,8 @@ public class Kai {
                         String to = input.substring(input.indexOf(" /to ") + 5);
                         tasks.add(new Event(desc, from, to));
                     } else throw new KaiException("\t I'm sorry, I don't recognise your command, " +
-<<<<<<< HEAD
                             "the currently supported (case-sensitive, without the quotation marks) commands are:\n\t " +
                             "'mark', 'unmark', 'delete', 'list', 'todo', 'deadline', and 'event'.\n\t " +
-=======
-                            "the currently supported (case-sensitive) commands are:\n\t " +
-                            "'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.\n\t " +
->>>>>>> 10fe418c80e78f9a68d6c2d957c01e7ea1a4eafa
                             "Did you forget to add a space at the end of the commands to input arguments if applicable?");
                     System.out.println("\t Task Added:");
                     System.out.println("\t \t " + tasks.get(tasks.size() - 1).toString());
