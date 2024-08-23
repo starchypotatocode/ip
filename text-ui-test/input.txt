@@ -4,11 +4,51 @@ todo
 event
 deadline
 meow
+list
+list
 
 mark 1
 unmark 1
 event 1
 deadline 1
 event /from /to
-event /from  /to
 deadline /by
+
+event /to 1 /from 2
+mark1
+unmark1
+deadline1
+todo1
+
+event /from1 /to 1
+event /from 1 /to1
+event/from 1 /to 1
+event /from 1/to 1
+event  /from 1 /to 1
+deadline /by1
+deadline/by 1
+deadline  /by 1
+
+list
+todo abc
+list
+event lessons /from now /to next year
+deadline homework /by ASAP
+list
+
+mark 2
+list
+
+mark 3
+mark 3
+list
+
+unmark 1
+unmark 1
+list
+
+mark 1
+unmark 2
+unmark 3
+list
+list

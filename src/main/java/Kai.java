@@ -53,13 +53,17 @@ public class Kai {
                 try {
                     if (input.startsWith("todo ") && input.length() >= 6) {
                         tasks.add(new ToDo(input.substring(5)));
-                    } else if (input.startsWith("deadline ")) {
-                        String deadline = input.substring(input.indexOf("/by ") + 4);
-                        tasks.add(new Deadline(input, deadline));
-                    } else if (input.startsWith("event ")) {
-                        String from = input.substring(input.indexOf("/from ") + 6, input.indexOf(" /to "));
+                    } else if (input.startsWith("deadline ") && input.contains(" /by ")) {
+                        String desc = input.substring(9, input.indexOf(" /by "));
+                        if (desc.isEmpty()) throw new IllegalArgumentException();
+                        String deadline = input.substring(input.indexOf(" /by ") + 5);
+                        tasks.add(new Deadline(desc, deadline));
+                    } else if (input.startsWith("event ") && input.contains(" /from ") && input.contains(" /to ")) {
+                        String desc = input.substring(6, input.indexOf(" /from "));
+                        if (desc.isEmpty()) throw new IllegalArgumentException();
+                        String from = input.substring(input.indexOf(" /from ") + 6, input.indexOf(" /to "));
                         String to = input.substring(input.indexOf(" /to ") + 5);
-                        tasks.add(new Event(input, from, to));
+                        tasks.add(new Event(desc, from, to));
                     } else throw new IllegalArgumentException();
                     System.out.println("\t Task Added:");
                     System.out.println("\t \t " + tasks.get(tasks.size() - 1).toString());
@@ -72,7 +76,6 @@ public class Kai {
                         "but could you please give me more to work with?");
             }
         }
-
         System.out.println("\t Bye. Hope to see you again soon!");
     }
 }
