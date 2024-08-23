@@ -4,38 +4,68 @@
 	 |   <  / _ \ | |
 	 |_|\_\/_/ \_\___|
 	 What can I do for you?
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 No tasks to list, please add some and try again?
-	 No tasks to list, please add some and try again?
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
+	 Ther are no tasks to list. Congratulations!
+	 Ther are no tasks to list. Congratulations!
 	 I would love to help you, but could you please give me more to work with?
-	 The task number specified is invalid, please retry.
-	 The task number specified is invalid, please retry.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
+	 There is no task corresponding to the number you entered, please try again.
+	 There is no task corresponding to the number you entered, please try again.
+	 The event command requires ' /from ' without the quotation marks, the first date,
+	 and then ' /to ' without the quotation marks followed by the second date to work properly.
+	 The deadline command requires ' /by ' without the quotation marks and then the deadline to work properly.
+	 The event command requires ' /from ' without the quotation marks, the first date,
+	 and then ' /to ' without the quotation marks followed by the second date to work properly.
+	 The deadline command requires ' /by ' without the quotation marks and then the deadline to work properly.
 	 I would love to help you, but could you please give me more to work with?
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
+	 The event command requires ' /from ' without the quotation marks, the first date,
+	 and then ' /to ' without the quotation marks followed by the second date to work properly.
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
 	 I would love to help you, but could you please give me more to work with?
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
-	 Invalid task input, please check how you formatted it and try again.
+	 The event command requires ' /from ' without the quotation marks, the first date,
+	 and then ' /to ' without the quotation marks followed by the second date to work properly.
+	 The event command requires ' /from ' without the quotation marks, the first date,
+	 and then ' /to ' without the quotation marks followed by the second date to work properly.
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
+	 The event command requires ' /from ' without the quotation marks, the first date,
+	 and then ' /to ' without the quotation marks followed by the second date to work properly.
+	 The event command must have a name for the task.
+	 The deadline command requires ' /by ' without the quotation marks and then the deadline to work properly.
+	 I'm sorry, I don't recognise your command, the currently supported (case-sensitive) commands are:
+	 'mark', 'unmark', 'list', 'todo', 'deadline' and 'event'.
+	 Did you forget to add a space at the end of the commands to input arguments if applicable?
+	 The deadline command must have a name for the task.
 	 I would love to help you, but could you please give me more to work with?
-	 No tasks to list, please add some and try again?
+	 Ther are no tasks to list. Congratulations!
 	 Task Added:
 	 	 [T] [ ] abc
 	 There is now 1 task(s) in the list.
@@ -92,14 +122,14 @@
 	 2. [E] [ ] lessons (from: now to: next year)
 	 3. [D] [ ] homework (by: ASAP)
 	 I would love to help you, but could you please give me more to work with?
+	 There is no task corresponding to the number you entered, please try again.
+	 There is no task corresponding to the number you entered, please try again.
 	 The task number specified is invalid, please retry.
 	 The task number specified is invalid, please retry.
 	 The task number specified is invalid, please retry.
 	 The task number specified is invalid, please retry.
-	 The task number specified is invalid, please retry.
-	 The task number specified is invalid, please retry.
-	 The task number specified is invalid, please retry.
-	 The task number specified is invalid, please retry.
-	 The task number specified is invalid, please retry.
-	 The task number specified is invalid, please retry.
+	 There is no task corresponding to the number you entered, please try again.
+	 There is no task corresponding to the number you entered, please try again.
+	 There is no task corresponding to the number you entered, please try again.
+	 There is no task corresponding to the number you entered, please try again.
 	 Bye. Hope to see you again soon!
