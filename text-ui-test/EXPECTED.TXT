@@ -4,3 +4,102 @@
 	 |   <  / _ \ | |
 	 |_|\_\/_/ \_\___|
 	 What can I do for you?
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 No tasks to list, please add some and try again?
+	 No tasks to list, please add some and try again?
+	 I would love to help you, but could you please give me more to work with?
+	 The task number specified is invalid, please retry.
+	 The task number specified is invalid, please retry.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 I would love to help you, but could you please give me more to work with?
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 I would love to help you, but could you please give me more to work with?
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 Invalid task input, please check how you formatted it and try again.
+	 I would love to help you, but could you please give me more to work with?
+	 No tasks to list, please add some and try again?
+	 Task Added:
+	 	 [T] [ ] abc
+	 There is now 1 task(s) in the list.
+	 Here are the tasks in your list:
+	 1. [T] [ ] abc
+	 Task Added:
+	 	 [E] [ ] lessons (from: now to: next year)
+	 There is now 2 task(s) in the list.
+	 Task Added:
+	 	 [D] [ ] homework (by: ASAP)
+	 There is now 3 task(s) in the list.
+	 Here are the tasks in your list:
+	 1. [T] [ ] abc
+	 2. [E] [ ] lessons (from: now to: next year)
+	 3. [D] [ ] homework (by: ASAP)
+	 I would love to help you, but could you please give me more to work with?
+	 Nice! I've marked this task as done:
+	 	 [E] [X] lessons (from: now to: next year)
+	 Here are the tasks in your list:
+	 1. [T] [ ] abc
+	 2. [E] [X] lessons (from: now to: next year)
+	 3. [D] [ ] homework (by: ASAP)
+	 I would love to help you, but could you please give me more to work with?
+	 Nice! I've marked this task as done:
+	 	 [D] [X] homework (by: ASAP)
+	 Nice! I've marked this task as done:
+	 	 [D] [X] homework (by: ASAP)
+	 Here are the tasks in your list:
+	 1. [T] [ ] abc
+	 2. [E] [X] lessons (from: now to: next year)
+	 3. [D] [X] homework (by: ASAP)
+	 I would love to help you, but could you please give me more to work with?
+	 Ok, I've marked this task as not done yet:
+	 	 [T] [ ] abc
+	 Ok, I've marked this task as not done yet:
+	 	 [T] [ ] abc
+	 Here are the tasks in your list:
+	 1. [T] [ ] abc
+	 2. [E] [X] lessons (from: now to: next year)
+	 3. [D] [X] homework (by: ASAP)
+	 I would love to help you, but could you please give me more to work with?
+	 Nice! I've marked this task as done:
+	 	 [T] [X] abc
+	 Ok, I've marked this task as not done yet:
+	 	 [E] [ ] lessons (from: now to: next year)
+	 Ok, I've marked this task as not done yet:
+	 	 [D] [ ] homework (by: ASAP)
+	 Here are the tasks in your list:
+	 1. [T] [X] abc
+	 2. [E] [ ] lessons (from: now to: next year)
+	 3. [D] [ ] homework (by: ASAP)
+	 Here are the tasks in your list:
+	 1. [T] [X] abc
+	 2. [E] [ ] lessons (from: now to: next year)
+	 3. [D] [ ] homework (by: ASAP)
+	 I would love to help you, but could you please give me more to work with?
+	 The task number specified is invalid, please retry.
+	 The task number specified is invalid, please retry.
+	 The task number specified is invalid, please retry.
+	 The task number specified is invalid, please retry.
+	 The task number specified is invalid, please retry.
+	 The task number specified is invalid, please retry.
+	 The task number specified is invalid, please retry.
+	 The task number specified is invalid, please retry.
+	 The task number specified is invalid, please retry.
+	 The task number specified is invalid, please retry.
+	 Bye. Hope to see you again soon!

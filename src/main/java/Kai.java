@@ -61,7 +61,7 @@ public class Kai {
                     } else if (input.startsWith("event ") && input.contains(" /from ") && input.contains(" /to ")) {
                         String desc = input.substring(6, input.indexOf(" /from "));
                         if (desc.isEmpty()) throw new IllegalArgumentException();
-                        String from = input.substring(input.indexOf(" /from ") + 6, input.indexOf(" /to "));
+                        String from = input.substring(input.indexOf(" /from ") + 7, input.indexOf(" /to "));
                         String to = input.substring(input.indexOf(" /to ") + 5);
                         tasks.add(new Event(desc, from, to));
                     } else throw new IllegalArgumentException();
@@ -77,5 +77,6 @@ public class Kai {
             }
         }
         System.out.println("\t Bye. Hope to see you again soon!");
+        sc.close();
     }
 }
