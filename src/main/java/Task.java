@@ -3,6 +3,7 @@
  * Marked as abstract for easy inheritance for other subclasses
  */
 public abstract class Task {
+
     protected String desc;
     private boolean isComplete;
 
@@ -29,6 +30,15 @@ public abstract class Task {
      */
     public final void markIncomplete() {
         this.isComplete = false;
+    }
+
+    /**
+     * Ensures that classes that inherit can have its state preserved by Storage for later recreation
+     *
+     * @return String that can be parsed by Storage to recreate the Task
+     */
+    public String serialize() {
+        return (this.isComplete ? 1 : 0) + " | " + this.desc;
     }
 
     @Override

@@ -1,3 +1,6 @@
+import java.io.File;
+import java.nio.file.Paths;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -6,18 +9,21 @@ import java.util.Scanner;
  */
 public class Kai {
 
+    private ArrayList<Task> tasks;
+
+    public Kai(String filePath) {
+        Ui ui = new Ui();
+        Storage storage = new Storage(filePath);
+        tasks = storage.load();
+    }
+
+
     /**
      * Main logic loop for the chatbot
      *
-     * @param args
      */
-    public static void main(String[] args) {
-        String logo = "\t __ ___   _  _____ \n" +
-                "\t | |/ /  /_\\ |_ _|\n" +
-                "\t |   <  / _ \\ | |\n" +
-                "\t |_|\\_\\/_/ \\_\\___|";
-        System.out.println("\t Hello! I'm \n" + logo);
-        System.out.println("\t What can I do for you?");
+    public void run() {
+        Ui.showWelcomeMessage();
 
         Scanner sc = new Scanner(System.in);
         ArrayList<Task> tasks = new ArrayList<>();
@@ -125,5 +131,15 @@ public class Kai {
         }
         System.out.println("\t Bye. Hope to see you again soon!");
         sc.close();
+    }
+
+    /**
+     * Initial entry point of the entire application,
+     * creates a Kai class to handle further details
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        new Kai("data/tasks.txt").run();
     }
 }

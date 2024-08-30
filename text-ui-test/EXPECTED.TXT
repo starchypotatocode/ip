@@ -1,5 +1,6 @@
-	 Hello! I'm 
-	 __ ___   _  _____ 
+	 Warning: There is no save file for Tasks, and one could not be created.
+	 Hello! I'm
+	 __ ___   _  _____
 	 | |/ /  /_\ |_ _|
 	 |   <  / _ \ | |
 	 |_|\_\/_/ \_\___|

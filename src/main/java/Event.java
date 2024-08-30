@@ -2,6 +2,7 @@
  * Event implements Task with start and end date information
  */
 public class Event extends Task {
+
     private String from;
     private String to;
 
@@ -17,6 +18,12 @@ public class Event extends Task {
         this.from = from;
         this.to = to;
     }
+
+    @Override
+    public String serialize() {
+        return "E | " + super.serialize() + " | " + this.from + " | " + this.to;
+    }
+
     @Override
     public String toString() {
         return "[E] " + super.toString() +
