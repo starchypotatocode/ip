@@ -1,7 +1,16 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Kai is the main control logic for chatbot functionality
+ */
 public class Kai {
+
+    /**
+     * Main logic loop for the chatbot
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         String logo = "\t __ ___   _  _____ \n" +
                 "\t | |/ /  /_\\ |_ _|\n" +
