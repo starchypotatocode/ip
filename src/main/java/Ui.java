@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Ui handles output to the screen
  */
@@ -23,5 +25,14 @@ public class Ui {
                 "\t |_|\\_\\/_/ \\_\\___|";
         System.out.println("\t Hello! I'm" + System.lineSeparator() + logo);
         System.out.println("\t What can I do for you?");
+    }
+
+    /**
+     * Prints out the exit message of the chatbot and then force exits.
+     */
+    public static void exit(Scanner sc) {
+        System.out.println("\t Bye. Hope to see you again soon!");
+        sc.close();
+        System.exit(0);
     }
 }
