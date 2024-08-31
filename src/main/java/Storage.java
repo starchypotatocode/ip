@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Storage handles the storage and retrieval of Tasks
  */
 public class Storage {
-    private File file;
+    private String filePath;
 
     /**
      * Constructs Storage with the appropriate path to retrieve or store Tasks in
@@ -18,7 +18,7 @@ public class Storage {
      * @param filePath
      */
     public Storage(String filePath) {
-        this.file = new File(filePath);
+        this.filePath = filePath;
     }
 
     /**
@@ -32,7 +32,7 @@ public class Storage {
             int numLines = 0;
             ArrayList<Task> res = new ArrayList<>();
 
-            Scanner sc = new Scanner(file);
+            Scanner sc = new Scanner(new File(filePath));
             while (sc.hasNextLine()) {
                 String task = sc.nextLine();
                 numLines++;
@@ -53,7 +53,7 @@ public class Storage {
             return res;
         } catch (FileNotFoundException e) {
             try {
-                if (!file.createNewFile()) {
+                if (!new File(filePath).createNewFile()) {
                     Ui.showLoadingError("\t Warning: There is no save file for Tasks, and one could not be created.");
                 }
             } catch (IOException e2) {
@@ -69,5 +69,19 @@ public class Storage {
      * @param tasks the Tasks to be saved
      */
     public void save(ArrayList<Task> tasks) {
+        try {
+            FileWriter fw = new FileWriter(filePath);
+            fw.write(""); // clean out the file for saving
+            fw.close();
+
+            fw = new FileWriter(filePath, true);
+            for (Task task : tasks) {
+                fw.write(task.serialize() + System.lineSeparator());
+                fw.flush();
+            }
+            fw.close();
+        } catch (IOException e) {
+
+        }
     }
 }

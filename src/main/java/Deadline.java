@@ -18,7 +18,7 @@ public class Deadline extends Task {
     @Override
     public String serialize() {
         String state = super.toString();
-        return "T | " + super.serialize() + " | " + this.deadline;
+        return "D | " + super.serialize() + " | " + this.deadline;
     }
 
     @Override

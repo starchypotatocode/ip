@@ -8,12 +8,18 @@ import java.util.Scanner;
  * Kai is the main control logic for chatbot functionality
  */
 public class Kai {
-
+    private Ui ui;
+    private Storage storage;
     private ArrayList<Task> tasks;
 
+    /**
+     * Constructor for the main chatbot class
+     *
+     * @param filePath where the Tasks are stored on disk
+     */
     public Kai(String filePath) {
-        Ui ui = new Ui();
-        Storage storage = new Storage(filePath);
+        ui = new Ui();
+        storage = new Storage(filePath);
         tasks = storage.load();
     }
 
@@ -26,7 +32,6 @@ public class Kai {
         Ui.showWelcomeMessage();
 
         Scanner sc = new Scanner(System.in);
-        ArrayList<Task> tasks = new ArrayList<>();
         while (true) {
             String input = sc.nextLine();
 
@@ -107,7 +112,8 @@ public class Kai {
                         if (!(input.contains(" /from ") && input.contains(" /to ")) ||
                                 input.indexOf(" /from ") >= input.indexOf(" /to ")) {
                             throw new KaiException("\t The event command requires ' /from ' without the quotation marks, " +
-                                    "the first date,\n\t and then ' /to ' without the quotation marks " +
+                                    "the first date," + System.lineSeparator() +
+                                    "\t and then ' /to ' without the quotation marks " +
                                     "followed by the second date to work properly.");
                         }
                         String desc = input.substring(6, input.indexOf(" /from "));
@@ -116,8 +122,10 @@ public class Kai {
                         String to = input.substring(input.indexOf(" /to ") + 5);
                         tasks.add(new Event(desc, from, to));
                     } else throw new KaiException("\t I'm sorry, I don't recognise your command, " +
-                            "the currently supported (case-sensitive, without the quotation marks) commands are:\n\t " +
-                            "'mark', 'unmark', 'delete', 'list', 'todo', 'deadline', and 'event'.\n\t " +
+                            "the currently supported (case-sensitive, without the quotation marks) commands are:" +
+                            System.lineSeparator() + "\t " +
+                            "'mark', 'unmark', 'delete', 'list', 'todo', 'deadline', and 'event'." +
+                            System.lineSeparator() + "\t " +
                             "Did you forget to add a space at the end of the commands to input arguments if applicable?");
                     System.out.println("\t Task Added:");
                     System.out.println("\t \t " + tasks.get(tasks.size() - 1).toString());
@@ -126,8 +134,9 @@ public class Kai {
                     System.out.println(e.getMessage());
                 }
             } else {
-
+                System.out.println("\t  would love to help you, but could you please give me more to work with?");
             }
+            storage.save(tasks);
         }
         System.out.println("\t Bye. Hope to see you again soon!");
         sc.close();

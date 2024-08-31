@@ -6,28 +6,50 @@ public class Parser {
     /**
      * Parses a string representing a Task and transforms it into an actual Task
      *
-     * @param task the string representation of the Task
+     * @param state the string representation of the Task
      * @return the Task corresponding to that representation
      * @throws IllegalArgumentException
      */
-    public static Task parseStoredTask(String task) throws IllegalArgumentException {
-        String type = task.substring(0, task.indexOf(" | ") + 3);
-        task = task.substring(type.length());
-        boolean isDone = (task.substring(0, task.indexOf(" | ")).equals("1"));
-        task = task.substring(task.indexOf(" | ") + 3);
+    public static Task parseStoredTask(String state) throws IllegalArgumentException {
+        String type = state.substring(0, state.indexOf(" | ") + 3);
+        state = state.substring(state.indexOf(" | ") + 3);
+
+        boolean isDone = (state.substring(0, state.indexOf(" | ")).equals("1"));
+        state = state.substring(state.indexOf(" | ") + 3);
+
+        String desc;
+        Task res;
 
         if (type.equals("T | ")) {
-            task.substring(task.indexOf(" "))
-
+            desc = state;
+            res = new ToDo(desc);
         } else if (type.equals("D | ")) {
+            desc = state.substring(0, state.indexOf(" | "));
+            state = state.substring(state.indexOf(" | ") + 3);
+
+            String deadline = state;
+            res = new Deadline(desc, deadline);
 
         } else if (type.equals("E | ")) {
+            desc = state.substring(0, state.indexOf(" | "));
+            state = state.substring(state.indexOf(" | ") + 3);
 
+            String from = state.substring(0, state.indexOf(" | "));
+            state = state.substring(state.indexOf(" | ") + 3);
+
+            String to = state;
+            res = new Event(desc, from, to);
         } else {
             throw new IllegalArgumentException();
         }
 
-        throw new IllegalArgumentException();
+        if (isDone) {
+            res.markComplete();
+        } else {
+            res.markIncomplete();
+        }
+
+        return res;
     }
 
     /**
