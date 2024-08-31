@@ -53,7 +53,7 @@ public class Parser {
     }
 
     /**
-     * Parses the command given and takes the appopriate response thereof.
+     * Parses the command given and takes the appropriate response thereof.
      *
      * @param command the command in question
      */
