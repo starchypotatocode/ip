@@ -61,7 +61,7 @@ public class Parser {
      * @param input the command in question
      */
     public static void parseCommand(String input, ArrayList<Task> tasks, Scanner sc) {
-        if (input.equals("bye")) Ui.exit();
+        if (input.equals("bye")) Ui.exit(sc);
         else if (input.equals("list")) {
             try {
                 if (tasks.isEmpty()) {
