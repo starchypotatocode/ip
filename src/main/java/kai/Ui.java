@@ -8,6 +8,13 @@ import java.util.Scanner;
 public class Ui {
 
     /**
+     * Constructor for Ui
+     */
+    public Ui() {
+
+    }
+
+    /**
      * Prints out the appropriate message for the type of loading error that occurred
      *
      * @param message The error message or warning in question

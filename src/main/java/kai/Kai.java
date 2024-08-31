@@ -27,7 +27,7 @@ public class Kai {
      *
      */
     public void run() {
-        Ui.showWelcomeMessage();
+        ui.showWelcomeMessage();
 
         Scanner sc = new Scanner(System.in);
         while (true) {
