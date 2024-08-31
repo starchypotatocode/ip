@@ -26,7 +26,6 @@ public class CreateDeadlineCommand extends Command {
         this.taskList = taskList;
         this.desc = desc;
         this.deadline = deadline;
-
     }
 
     @Override
