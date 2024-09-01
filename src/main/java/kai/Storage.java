@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,7 +43,9 @@ public class Storage {
 
                 try {
                     res.add(parser.parseStoredTask(task));
-                } catch (IllegalArgumentException e) {
+                } catch (IllegalArgumentException |
+                        StringIndexOutOfBoundsException |
+                         DateTimeParseException e) {
                     numFailures++;
                     ui.showLoadingError("\t The loading of Task " + numLines +
                             " failed as it was corrupted in disk.");

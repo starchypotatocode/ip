@@ -1,21 +1,26 @@
 package kai.tasks;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Event implements Task with start and end date information
  */
 public class Event extends Task {
 
-    private final String from;
-    private final String to;
+    private final LocalDate from;
+    private final LocalDate to;
+    private static final DateTimeFormatter outputFormatter =
+            DateTimeFormatter.ofPattern("MMM dd yyyy");
 
     /**
      * Construct a new ToDo with the specified description, start and end date
      *
      * @param desc the description of the Task
-     * @param from the start date of the Task (does not need to be a Date)
-     * @param to the end date of the Task (does not need to be a Date)
+     * @param from the start date of the Task, represented as a LocalDate
+     * @param to the end date of the Task, represented as a LocalDate
      */
-    public Event(String desc, String from, String to) {
+    public Event(String desc, LocalDate from, LocalDate to) {
         super(desc);
         this.from = from;
         this.to = to;
@@ -23,12 +28,13 @@ public class Event extends Task {
 
     @Override
     public String serialize() {
-        return "E | " + super.serialize() + " | " + this.from + " | " + this.to;
+        return "E | " + super.serialize() + " | " +
+                from.format(outputFormatter) + " | " + to.format(outputFormatter);
     }
 
     @Override
     public String toString() {
-        return "[E] " + super.toString() +
-                " (from: " + this.from + " to: " + this.to + ")";
+        return "[E] " + super.toString() + " (from: " + from.format(outputFormatter) +
+                " to: " + to.format(outputFormatter) + ")";
     }
 }

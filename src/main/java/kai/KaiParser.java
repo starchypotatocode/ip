@@ -1,5 +1,8 @@
 package kai;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 import kai.commands.Command;
@@ -21,6 +24,10 @@ import kai.tasks.ToDo;
  * Class to keep the logic of parsing input in one place.
  */
 public class KaiParser {
+    private static final DateTimeFormatter inputFormatter =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter storageFormatter =
+            DateTimeFormatter.ofPattern("MMM dd yyyy");
 
     /**
      * Parses a string representing a Task and transforms it into an actual Task
@@ -30,7 +37,8 @@ public class KaiParser {
      * @throws IllegalArgumentException if the stored Task state is invalid
      */
     public Task parseStoredTask(String state)
-            throws IllegalArgumentException, StringIndexOutOfBoundsException {
+            throws IllegalArgumentException, StringIndexOutOfBoundsException,
+            DateTimeParseException {
         String type = state.substring(0, state.indexOf(" | ") + 3);
         state = state.substring(state.indexOf(" | ") + 3);
 
@@ -48,17 +56,18 @@ public class KaiParser {
             desc = state.substring(0, state.indexOf(" | "));
             state = state.substring(state.indexOf(" | ") + 3);
 
-            String deadline = state;
+            LocalDate deadline = LocalDate.parse(state, storageFormatter);
             res = new Deadline(desc, deadline);
         }
         case "E | " -> {
             desc = state.substring(0, state.indexOf(" | "));
             state = state.substring(state.indexOf(" | ") + 3);
 
-            String from = state.substring(0, state.indexOf(" | "));
+            LocalDate from = LocalDate.parse(
+                    state.substring(0, state.indexOf(" | ")), storageFormatter);
             state = state.substring(state.indexOf(" | ") + 3);
 
-            String to = state;
+            LocalDate to = LocalDate.parse(state, storageFormatter);
             res = new Event(desc, from, to);
         }
         default -> throw new IllegalArgumentException();
@@ -133,8 +142,14 @@ public class KaiParser {
                     if (desc.isEmpty()) {
                         return new InvalidCommand("\t The deadline command must have a name for the task.");
                     }
-                    String deadline = input.substring(input.indexOf(" /by ") + 5);
-                    return new CreateDeadlineCommand(taskList, desc, deadline);
+                    try {
+                        LocalDate deadline = LocalDate.parse(
+                                input.substring(input.indexOf(" /by ") + 5), inputFormatter);
+                        return new CreateDeadlineCommand(taskList, desc, deadline);
+                    } catch (DateTimeParseException e) {
+                        return new InvalidCommand("\t The input dates could not be parsed:" + System.lineSeparator() +
+                                "\t Did you follow the format of yyyy-MM-dd and pad 0s in front (eg: 2019-09-15)?");
+                    }
                 } else if (input.startsWith("event ")) {
                 if (!(input.contains(" /from ") && input.contains(" /to ")) ||
                         input.indexOf(" /from ") >= input.indexOf(" /to ")) {
@@ -147,9 +162,22 @@ public class KaiParser {
                 if (desc.isEmpty()) {
                     return new InvalidCommand("\t The event command must have a name for the task.");
                 }
-                String from = input.substring(input.indexOf(" /from ") + 7, input.indexOf(" /to "));
-                String to = input.substring(input.indexOf(" /to ") + 5);
-                return new CreateEventCommand(taskList, desc, from, to);
+
+                try {
+                    LocalDate from = LocalDate.parse(
+                            input.substring(input.indexOf(" /from ") + 7, input.indexOf(" /to ")),
+                            inputFormatter);
+                    LocalDate to = LocalDate.parse(
+                            input.substring(input.indexOf(" /to ") + 5), inputFormatter);
+                    if (from.isAfter(to)) {
+                        return new InvalidCommand("\t The start date of the event needs to be before or equal to the end date!");
+                    }
+                    return new CreateEventCommand(taskList, desc, from, to);
+                } catch (DateTimeParseException e) {
+                    return new InvalidCommand("\t The input dates could not be parsed:" + System.lineSeparator() +
+                            "\t Did you follow the format of yyyy-MM-dd and pad 0s in front (eg: 2019-09-15)?");
+                }
+
             } else {
                 return new InvalidCommand("\t I'm sorry, I don't recognise your command, " +
                         "the currently supported (case-sensitive, without the quotation marks) commands are:" +
