@@ -20,9 +20,6 @@ public class ListCommand extends Command {
 
     @Override
     public void invoke(Ui ui) {
-        for (int i = 0; i < taskList.size(); i++) {
-            System.out.println("\t " + (i + 1) + ". " +
-                    taskList.getTask(i).toString());
-        }
+        ui.showListCommandResults(taskList);
     }
 }

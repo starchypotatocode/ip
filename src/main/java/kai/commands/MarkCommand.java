@@ -23,6 +23,6 @@ public class MarkCommand extends Command {
     @Override
     public void invoke(Ui ui) {
         task.markComplete();
-        ui.showMarkCommandErrors(task);
+        ui.showMarkCommandResults(task);
     }
 }

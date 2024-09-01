@@ -8,14 +8,7 @@ import kai.tasks.Task;
 public class Ui {
 
     /**
-     * Constructor for Ui
-     */
-    public Ui() {
-
-    }
-
-    /**
-     * Prints out the appropriate message for the type of loading error that occurred
+     * Prints out a message corresponding the loading error/warning that occurred
      *
      * @param message The error message or warning in question
      */
@@ -37,13 +30,57 @@ public class Ui {
     }
 
     /**
+     * Prints out the exit message of the chatbot and then force exits
+     */
+    public void exit() {
+        System.out.println("\t Bye. Hope to see you again soon!");
+        // Kai.closeResources()?
+        System.exit(0);
+    }
+
+    /**
+     * Prints out the Tasks in the TaskList if any and formats it accordingly
+     *
+     * @param taskList the TaskList in question
+     */
+    public void showListCommandResults(TaskList taskList) {
+        if (taskList.isEmpty()) {
+            System.out.println("\t There are no tasks to list. Congratulations!");
+        } else {
+            System.out.println("\t Here are the tasks in your list:");
+        }
+        for (int i = 0; i < taskList.size(); i++) {
+            System.out.println("\t " + (i + 1) + ". " +
+                    taskList.getTask(i).toString());
+        }
+    }
+
+    /**
+     * Prints out a message corresponding the MarkCommand error/warning that occurred
+     *
+     * @param message The error message or warning in question
+     */
+    public void showMarkCommandError(String message) {
+        System.out.println(message);
+    }
+
+    /**
      * Prints out the message of a Task being marked complete
      *
      * @param task the Task in question
      */
-    public void showMarkCommandErrors(Task task) {
+    public void showMarkCommandResults(Task task) {
         System.out.println("\t Nice! I've marked this task as done:");
         System.out.println("\t \t " + task.toString());
+    }
+
+    /**
+     * Prints out a message corresponding the UnmarkCommand error/warning that occurred
+     *
+     * @param message The error message or warning in question
+     */
+    public void showUnmarkCommandError(String message) {
+        System.out.println(message);
     }
 
     /**
@@ -57,16 +94,12 @@ public class Ui {
     }
 
     /**
-     * Prints out the description of the created Task
-     * and the current number of Tasks in the TaskList
-     * (Applies to any command that creates a Task)
+     * Prints out a message corresponding the DeleteCommand error/warning that occurred
      *
-     * @param taskList the TaskList in question
+     * @param message The error message or warning in question
      */
-    public void showCreateTaskCommandResults(TaskList taskList) {
-        System.out.println("\t Task Added:");
-        System.out.println("\t \t " + taskList.getTask(taskList.size() - 1).toString());
-        System.out.println("\t " + "There is now " + taskList.size() + " task(s) in the list.");
+    public void showDeleteCommandError(String message) {
+        System.out.println(message);
     }
 
     /**
@@ -81,6 +114,29 @@ public class Ui {
         System.out.println("\t \t " + taskDesc);
         System.out.println("\t " + "There is now " + tasksLeft +
                 " task(s) in the list.");
+    }
+
+    /**
+     * Prints out a message corresponding the CreateTaskCommand error/warning that occurred
+     * (No such class with this exact name, but the idea is there - eg: CreateEventCommand
+     *
+     * @param message The error message or warning in question
+     */
+    public void showCreateTaskCommandError(String message) {
+        System.out.println(message);
+    }
+
+    /**
+     * Prints out the description of the created Task
+     * and the current number of Tasks in the TaskList
+     * (Applies to any command that creates a Task)
+     *
+     * @param taskList the TaskList in question
+     */
+    public void showCreateTaskCommandResults(TaskList taskList) {
+        System.out.println("\t Task Added:");
+        System.out.println("\t \t " + taskList.getTask(taskList.size() - 1).toString());
+        System.out.println("\t " + "There is now " + taskList.size() + " task(s) in the list.");
     }
 
     /**
@@ -100,14 +156,5 @@ public class Ui {
                     System.lineSeparator() + "\t " +
                     "Did you forget to add a space at the end of the commands to input arguments if applicable?");
         }
-    }
-
-    /**
-     * Prints out the exit message of the chatbot and then force exits
-     */
-    public void exit() {
-        System.out.println("\t Bye. Hope to see you again soon!");
-        // Kai.closeResources() ?
-        System.exit(0);
     }
 }

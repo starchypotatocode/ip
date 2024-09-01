@@ -5,8 +5,8 @@ package kai.tasks;
  */
 public class Event extends Task {
 
-    private String from;
-    private String to;
+    private final String from;
+    private final String to;
 
     /**
      * Construct a new ToDo with the specified description, start and end date

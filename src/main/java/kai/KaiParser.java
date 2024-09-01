@@ -37,7 +37,8 @@ public class KaiParser {
      * @return the Task corresponding to that representation
      * @throws IllegalArgumentException if the stored Task state is invalid
      */
-    public Task parseStoredTask(String state) throws IllegalArgumentException {
+    public Task parseStoredTask(String state)
+            throws IllegalArgumentException, StringIndexOutOfBoundsException {
         String type = state.substring(0, state.indexOf(" | ") + 3);
         state = state.substring(state.indexOf(" | ") + 3);
 
@@ -46,34 +47,29 @@ public class KaiParser {
 
         String desc;
         Task res;
+        switch (type) {
+        case "T | " -> {
+            desc = state;
+            res = new ToDo(desc);
+        }
+        case "D | " -> {
+            desc = state.substring(0, state.indexOf(" | "));
+            state = state.substring(state.indexOf(" | ") + 3);
 
-        try {
-            switch (type) {
-            case "T | " -> {
-                desc = state;
-                res = new ToDo(desc);
-            }
-            case "D | " -> {
-                desc = state.substring(0, state.indexOf(" | "));
-                state = state.substring(state.indexOf(" | ") + 3);
+            String deadline = state;
+            res = new Deadline(desc, deadline);
+        }
+        case "E | " -> {
+            desc = state.substring(0, state.indexOf(" | "));
+            state = state.substring(state.indexOf(" | ") + 3);
 
-                String deadline = state;
-                res = new Deadline(desc, deadline);
-            }
-            case "E | " -> {
-                desc = state.substring(0, state.indexOf(" | "));
-                state = state.substring(state.indexOf(" | ") + 3);
+            String from = state.substring(0, state.indexOf(" | "));
+            state = state.substring(state.indexOf(" | ") + 3);
 
-                String from = state.substring(0, state.indexOf(" | "));
-                state = state.substring(state.indexOf(" | ") + 3);
-
-                String to = state;
-                res = new Event(desc, from, to);
-            }
-            default -> throw new IllegalArgumentException();
-            }
-        } catch (StringIndexOutOfBoundsException e) {
-            throw new IllegalArgumentException();
+            String to = state;
+            res = new Event(desc, from, to);
+        }
+        default -> throw new IllegalArgumentException();
         }
 
         if (isDone) {
@@ -95,93 +91,75 @@ public class KaiParser {
             return new ExitCommand();
         }
         else if (input.equals("list")) {
-            try {
-                if (taskList.isEmpty()) {
-                    throw new KaiException("\t There are no tasks to list. Congratulations!");
-                } else {
-                    System.out.println("\t Here are the tasks in your list:");
-                }
-                return new ListCommand(taskList);
-            }
-            catch (KaiException e) {
-                System.out.println(e.getMessage());
-            }
+            return new ListCommand(taskList);
         } else if (input.startsWith("mark ")) {
             try {
                 int index = Integer.parseInt(input.substring(5)) - 1;
                 if (index >= taskList.size() || index < 0) {
-                    throw new KaiException("\t There is no task corresponding to" +
+                    ui.showMarkCommandError("\t There is no task corresponding to" +
                             " the number you entered, please try again.");
                 }
                 return new MarkCommand(taskList.getTask(index));
             } catch (IllegalArgumentException e) {
-                System.out.println("\t The task number specified is invalid, please retry.");
-            } catch (KaiException e) {
-                System.out.println(e.getMessage());
+                ui.showMarkCommandError("\t The task number specified is invalid, please retry.");
             }
         } else if (input.startsWith("unmark ")) {
             try {
                 int index = Integer.parseInt(input.substring(7)) - 1;
                 if (index >= taskList.size() || index < 0) {
-                    throw new KaiException("\t There is no task corresponding to" +
+                    ui.showUnmarkCommandError("\t There is no task corresponding to" +
                             " the number you entered, please try again.");
                 }
                 return new UnmarkCommand(taskList.getTask(index));
             } catch (IllegalArgumentException e) {
-                System.out.println("\t The task number specified is invalid, please retry.");
-            } catch (KaiException e) {
-                System.out.println(e.getMessage());
+                ui.showUnmarkCommandError("\t The task number specified is invalid, please retry.");
             }
         } else if (input.startsWith("delete ")) {
             try {
                 int index = Integer.parseInt(input.substring(7)) - 1;
                 if (index >= taskList.size() || index < 0) {
-                    throw new KaiException("\t There is no task corresponding to" +
+                    ui.showDeleteCommandError("\t There is no task corresponding to" +
                             " the number you entered, please try again.");
                 }
                 return new DeleteCommand(taskList, index);
             } catch (IllegalArgumentException e) {
-                System.out.println("\t The task number specified is invalid, please retry.");
-            } catch (KaiException e) {
-                System.out.println(e.getMessage());
+                ui.showDeleteCommandError("\t The task number specified is invalid, please retry.");
             }
         } else if (!input.isEmpty()) {
-            try {
-                if (input.startsWith("todo ")) {
+            if (input.startsWith("todo ")) {
                     if (input.length() < 6) {
-                        throw new KaiException("\t The todo command must have a name for the task.");
+                        ui.showCreateTaskCommandError("\t The todo command must have a name for the task.");
                     }
                     return new CreateToDoCommand(taskList, input.substring(5));
                 } else if (input.startsWith("deadline ")) {
                     if (!input.contains(" /by ")) {
-                        throw new KaiException("\t The deadline command requires ' /by ' without the quotation marks " +
-                                "and then the deadline to work properly.");
+                        ui.showCreateTaskCommandError("\t The deadline command requires ' /by '" +
+                                " without the quotation marks " + "and then the deadline to work properly.");
                     }
                     String desc = input.substring(9, input.indexOf(" /by "));
                     if (desc.isEmpty()) {
-                        throw new KaiException("\t The deadline command must have a name for the task.");
+                        ui.showCreateTaskCommandError("\t The deadline command must have a name for the task.");
                     }
                     String deadline = input.substring(input.indexOf(" /by ") + 5);
                     return new CreateDeadlineCommand(taskList, desc, deadline);
                 } else if (input.startsWith("event ")) {
-                    if (!(input.contains(" /from ") && input.contains(" /to ")) ||
-                            input.indexOf(" /from ") >= input.indexOf(" /to ")) {
-                        throw new KaiException("\t The event command requires ' /from ' without the quotation marks, " +
-                                "the first date," + System.lineSeparator() +
-                                "\t and then ' /to ' without the quotation marks " +
-                                "followed by the second date to work properly.");
-                    }
-                    String desc = input.substring(6, input.indexOf(" /from "));
-                    if (desc.isEmpty()) throw new KaiException("\t The event command must have a name for the task.");
-                    String from = input.substring(input.indexOf(" /from ") + 7, input.indexOf(" /to "));
-                    String to = input.substring(input.indexOf(" /to ") + 5);
-                    return new CreateEventCommand(taskList, desc, from, to);
-                } else {
-                    return new InvalidCommand(false);
-
+                if (!(input.contains(" /from ") && input.contains(" /to ")) ||
+                        input.indexOf(" /from ") >= input.indexOf(" /to ")) {
+                    ui.showCreateTaskCommandError("\t The event command requires ' /from '" +
+                            " without the quotation marks, the first date," + System.lineSeparator() +
+                            "\t and then ' /to ' without the quotation marks " +
+                            "followed by the second date to work properly.");
                 }
-            } catch (KaiException e) {
-                System.out.println(e.getMessage());
+                String desc = input.substring(6, input.indexOf(" /from "));
+                if (desc.isEmpty()) {
+                    ui.showCreateTaskCommandError("\t The event command must have a name for the task.");
+                }
+                String from = input.substring(input.indexOf(" /from ") + 7, input.indexOf(" /to "));
+                String to = input.substring(input.indexOf(" /to ") + 5);
+                return new CreateEventCommand(taskList, desc, from, to);
+            } else {
+                return new InvalidCommand(false);
+
             }
         }
         return new InvalidCommand(true);
