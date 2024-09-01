@@ -1,5 +1,6 @@
 package kai.commands;
 
+import kai.Ui;
 import kai.tasks.Task;
 
 /**
@@ -20,7 +21,8 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void invoke() {
-        this.task.markIncomplete();
+    public void invoke(Ui ui) {
+        task.markIncomplete();
+        ui.showUnmarkCommandResults(task);
     }
 }

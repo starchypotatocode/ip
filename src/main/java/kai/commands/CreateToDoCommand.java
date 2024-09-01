@@ -1,6 +1,7 @@
 package kai.commands;
 
 import kai.TaskList;
+import kai.Ui;
 import kai.tasks.ToDo;
 
 /**
@@ -26,13 +27,14 @@ public class CreateToDoCommand extends Command {
     }
 
     @Override
-    public void invoke() {
-        if (!this.isInvoked) {
-            ToDo task = new ToDo(this.desc);
-            this.taskList.add(task);
+    public void invoke(Ui ui) {
+        if (!isInvoked) {
+            ToDo task = new ToDo(desc);
+            taskList.add(task);
+            ui.showCreateTaskCommandResults(taskList);
         } else {
             // Ui error or debugging log maybe?
         }
-        this.isInvoked = true;
+        isInvoked = true;
     }
 }

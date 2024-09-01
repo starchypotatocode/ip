@@ -1,6 +1,7 @@
 package kai.commands;
 
 import kai.TaskList;
+import kai.Ui;
 import kai.tasks.Deadline;
 
 /**
@@ -29,13 +30,14 @@ public class CreateDeadlineCommand extends Command {
     }
 
     @Override
-    public void invoke() {
-        if (!this.isInvoked) {
-            Deadline task = new Deadline(this.desc, this.deadline);
-            this.taskList.add(task);
+    public void invoke(Ui ui) {
+        if (!isInvoked) {
+            Deadline task = new Deadline(desc, deadline);
+            taskList.add(task);
+            ui.showCreateTaskCommandResults(taskList);
         } else {
             // Ui error or debugging log maybe?
         }
-        this.isInvoked = true;
+        isInvoked = true;
     }
 }

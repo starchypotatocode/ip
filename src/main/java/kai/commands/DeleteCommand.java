@@ -1,6 +1,7 @@
 package kai.commands;
 
 import kai.TaskList;
+import kai.Ui;
 
 /**
  * This Command deletes the Task given by index
@@ -25,12 +26,16 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void invoke() {
-        if (!this.isInvoked) {
-            this.taskList.remove(this.index);
+    public void invoke(Ui ui) {
+        if (!isInvoked) {
+            String taskDesc = taskList.getTask(index).toString();
+            taskList.remove(index);
+
+            int tasksLeft = taskList.size();
+            ui.showDeleteCommandResults(taskDesc, tasksLeft);
         } else {
             // Ui error or debugging log maybe?
         }
-        this.isInvoked = true;
+        isInvoked = true;
     }
 }

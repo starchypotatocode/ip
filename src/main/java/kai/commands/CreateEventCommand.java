@@ -1,6 +1,7 @@
 package kai.commands;
 
 import kai.TaskList;
+import kai.Ui;
 import kai.tasks.Event;
 
 /**
@@ -32,13 +33,14 @@ public class CreateEventCommand extends Command {
     }
 
     @Override
-    public void invoke() {
-        if (!this.isInvoked) {
-            Event task = new Event(this.desc, this.from, this.to);
-            this.taskList.add(task);
+    public void invoke(Ui ui) {
+        if (!isInvoked) {
+            Event task = new Event(desc, from, to);
+            taskList.add(task);
+            ui.showCreateTaskCommandResults(taskList);
         } else {
             // Ui error or debugging log maybe?
         }
-        this.isInvoked = true;
+        isInvoked = true;
     }
 }

@@ -7,15 +7,8 @@ import kai.Ui;
  */
 public class ExitCommand extends Command {
 
-    /**
-     * Constructor for ExitCommand
-     */
-    public ExitCommand() {
-
-    }
-
     @Override
-    public void invoke() {
-
+    public void invoke(Ui ui) {
+        ui.exit();
     }
 }

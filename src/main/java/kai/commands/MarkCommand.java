@@ -1,5 +1,6 @@
 package kai.commands;
 
+import kai.Ui;
 import kai.tasks.Task;
 
 /**
@@ -20,7 +21,8 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void invoke() {
-        this.task.markComplete();
+    public void invoke(Ui ui) {
+        task.markComplete();
+        ui.showMarkCommandErrors(task);
     }
 }
