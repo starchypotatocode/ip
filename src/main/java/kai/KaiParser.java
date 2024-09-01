@@ -6,6 +6,7 @@ import kai.commands.CreateEventCommand;
 import kai.commands.CreateToDoCommand;
 import kai.commands.DeleteCommand;
 import kai.commands.ExitCommand;
+import kai.commands.InvalidCommand;
 import kai.commands.ListCommand;
 import kai.commands.MarkCommand;
 import kai.commands.UnmarkCommand;
@@ -94,7 +95,17 @@ public class KaiParser {
             return new ExitCommand();
         }
         else if (input.equals("list")) {
-            return new ListCommand(taskList);
+            try {
+                if (taskList.isEmpty()) {
+                    throw new KaiException("\t There are no tasks to list. Congratulations!");
+                } else {
+                    System.out.println("\t Here are the tasks in your list:");
+                }
+                return new ListCommand(taskList);
+            }
+            catch (KaiException e) {
+                System.out.println(e.getMessage());
+            }
         } else if (input.startsWith("mark ")) {
             try {
                 int index = Integer.parseInt(input.substring(5)) - 1;
@@ -165,19 +176,14 @@ public class KaiParser {
                     String from = input.substring(input.indexOf(" /from ") + 7, input.indexOf(" /to "));
                     String to = input.substring(input.indexOf(" /to ") + 5);
                     return new CreateEventCommand(taskList, desc, from, to);
-                } else throw new KaiException("\t I'm sorry, I don't recognise your command, " +
-                        "the currently supported (case-sensitive, without the quotation marks) commands are:" +
-                        System.lineSeparator() + "\t " +
-                        "'mark', 'unmark', 'delete', 'list', 'todo', 'deadline', and 'event'." +
-                        System.lineSeparator() + "\t " +
-                        "Did you forget to add a space at the end of the commands to input arguments if applicable?");
+                } else {
+                    return new InvalidCommand(false);
+
+                }
             } catch (KaiException e) {
                 System.out.println(e.getMessage());
             }
-        } else {
-            System.out.println("\t I would love to help you, but could you please give me more to work with?");
         }
-        return null;
+        return new InvalidCommand(true);
     }
-
 }

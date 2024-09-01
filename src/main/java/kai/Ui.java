@@ -84,6 +84,25 @@ public class Ui {
     }
 
     /**
+     * Prints out the results of giving a totally invalid Command
+     *
+     * @param isEmpty whether the Command was totally empty or not
+     */
+    public void showInvalidCommandResults(boolean isEmpty) {
+        if (isEmpty) {
+            System.out.println("\t I would love to help you, " +
+                    "but could you please give me more to work with?");
+        } else {
+            System.out.println("\t I'm sorry, I don't recognise your command, " +
+                    "the currently supported (case-sensitive, without the quotation marks) commands are:" +
+                    System.lineSeparator() + "\t " +
+                    "'mark', 'unmark', 'delete', 'list', 'todo', 'deadline', and 'event'." +
+                    System.lineSeparator() + "\t " +
+                    "Did you forget to add a space at the end of the commands to input arguments if applicable?");
+        }
+    }
+
+    /**
      * Prints out the exit message of the chatbot and then force exits
      */
     public void exit() {

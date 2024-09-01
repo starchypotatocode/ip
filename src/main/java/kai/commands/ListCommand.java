@@ -22,19 +22,9 @@ public class ListCommand extends Command {
 
     @Override
     public void invoke(Ui ui) {
-        try {
-            if (taskList.isEmpty()) {
-                throw new KaiException("\t There are no tasks to list. Congratulations!");
-            } else {
-                System.out.println("\t Here are the tasks in your list:");
-            }
-            for (int i = 0; i < taskList.size(); i++) {
-                System.out.println("\t " + (i + 1) + ". " +
-                        taskList.getTask(i).toString());
-            }
-        }
-        catch (KaiException e) {
-            System.out.println(e.getMessage());
+        for (int i = 0; i < taskList.size(); i++) {
+            System.out.println("\t " + (i + 1) + ". " +
+                    taskList.getTask(i).toString());
         }
     }
 }
