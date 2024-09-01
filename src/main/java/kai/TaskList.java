@@ -8,14 +8,7 @@ import kai.tasks.Task;
  * For managing the list of Task in an encapsulated manner
  */
 public class TaskList {
-    private ArrayList<Task> tasks;
-
-    /**
-     * Constructor of empty TaskList
-     */
-    public TaskList() {
-        this.tasks = new ArrayList<>();
-    }
+    private final ArrayList<Task> tasks;
 
     /**
      * Constructor of TaskList with the given tasks

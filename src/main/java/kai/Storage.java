@@ -13,7 +13,7 @@ import kai.tasks.Task;
  * Storage handles the storage and retrieval of Tasks
  */
 public class Storage {
-    private String filePath;
+    private final String filePath;
 
     /**
      * Constructs Storage with the appropriate path to retrieve or store Tasks in

@@ -8,10 +8,10 @@ import kai.commands.Command;
  * Kai is the main control logic for chatbot functionality
  */
 public class Kai {
-    private Ui ui;
-    private Storage storage;
-    private TaskList tasks;
-    private KaiParser parser;
+    private final Ui ui;
+    private final Storage storage;
+    private final TaskList tasks;
+    private final KaiParser parser;
 
     /**
      * Constructor for the main chatbot class

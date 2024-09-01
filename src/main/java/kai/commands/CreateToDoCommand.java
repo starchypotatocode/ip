@@ -5,7 +5,7 @@ import kai.Ui;
 import kai.tasks.ToDo;
 
 /**
- * This Command creates a ToDo and adds it to the TaskList
+ * This Command creates an ToDo and adds it to the TaskList
  * It is immediately implemented as one-use
  * to avoid potential re-use issues down the line
  */
@@ -15,7 +15,7 @@ public class CreateToDoCommand extends Command {
     private final String desc;
 
     /**
-     * Constructs a CreateToDoCommand which creates a ToDo when invoked
+     * Constructs an CreateToDoCommand which creates a ToDo when invoked
      * and adds it to the taskList afterward
      *
      * @param taskList the TaskList the Task will be added to

@@ -1,6 +1,5 @@
 package kai.commands;
 
-import kai.KaiException;
 import kai.TaskList;
 import kai.Ui;
 
@@ -14,7 +13,6 @@ public class ListCommand extends Command {
      * Constructs a ListCommand with the TaskList to list out
      *
      * @param taskList the TaskList to be listed out
-     * @param ui the Ui used to display messages on screen
      */
     public ListCommand(TaskList taskList) {
         this.taskList = taskList;
