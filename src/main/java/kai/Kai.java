@@ -2,13 +2,16 @@ package kai;
 
 import java.util.Scanner;
 
+import kai.commands.Command;
+
 /**
  * Kai is the main control logic for chatbot functionality
  */
 public class Kai {
-    private Ui ui;
-    private Storage storage;
-    private TaskList tasks;
+    private final Ui ui;
+    private final Storage storage;
+    private final TaskList tasks;
+    private final KaiParser parser;
 
     /**
      * Constructor for the main chatbot class
@@ -18,7 +21,9 @@ public class Kai {
     public Kai(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
-        tasks = new TaskList(storage.load());
+        parser = new KaiParser();
+        tasks = new TaskList(storage.load(parser, ui));
+
     }
 
 
@@ -28,11 +33,12 @@ public class Kai {
      */
     public void run() {
         ui.showWelcomeMessage();
-
         Scanner sc = new Scanner(System.in);
-        while (true) {
+        while (sc.hasNextLine()) {
             String input = sc.nextLine();
-            Parser.parseCommand(input, tasks, sc);
+            Command command = parser.parseCommand(input, tasks, sc);
+
+            command.invoke(ui);
             storage.save(tasks);
         }
     }

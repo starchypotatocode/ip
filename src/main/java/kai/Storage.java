@@ -13,12 +13,12 @@ import kai.tasks.Task;
  * Storage handles the storage and retrieval of Tasks
  */
 public class Storage {
-    private String filePath;
+    private final String filePath;
 
     /**
      * Constructs Storage with the appropriate path to retrieve or store Tasks in
      *
-     * @param filePath
+     * @param filePath the path of the file the Task states are found in
      */
     public Storage(String filePath) {
         this.filePath = filePath;
@@ -29,7 +29,7 @@ public class Storage {
      *
      * @return ArrayList of Tasks appropriately configured
      */
-    public ArrayList<Task> load() {
+    public ArrayList<Task> load(KaiParser parser, Ui ui) {
         try {
             int numFailures = 0;
             int numLines = 0;
@@ -41,26 +41,29 @@ public class Storage {
                 numLines++;
 
                 try {
-                    res.add(Parser.parseStoredTask(task));
+                    res.add(parser.parseStoredTask(task));
                 } catch (IllegalArgumentException e) {
                     numFailures++;
-                    Ui.showLoadingError("\t The loading of Task " + numLines + " failed as it was corrupted in disk.");
+                    ui.showLoadingError("\t The loading of Task " + numLines +
+                            " failed as it was corrupted in disk.");
                 }
             }
 
             sc.close();
             if (numFailures > 0) {
-                Ui.showLoadingError("\t In total, " + numFailures + "/" + (numFailures + res.size()) +
-                        " tasks failed to load from disk.");
+                ui.showLoadingError("\t In total, " + numFailures + "/" +
+                        (numFailures + res.size()) + " tasks failed to load from disk.");
             }
             return res;
         } catch (FileNotFoundException e) {
             try {
                 if (!new File(filePath).createNewFile()) {
-                    Ui.showLoadingError("\t Warning: There is no save file for Tasks, and one could not be created.");
+                    ui.showLoadingError("\t Warning: There is no save file for Tasks," +
+                            " and one could not be created.");
                 }
             } catch (IOException e2) {
-                Ui.showLoadingError("\t Warning: There is no save file for Tasks, and one could not be created.");
+                ui.showLoadingError("\t Warning: There is no save file for Tasks," +
+                        " and one could not be created.");
             }
             return new ArrayList<>();
         }
@@ -84,7 +87,7 @@ public class Storage {
             }
             fw.close();
         } catch (IOException e) {
-
+            // log error to log and/or display to ui?
         }
     }
 }
