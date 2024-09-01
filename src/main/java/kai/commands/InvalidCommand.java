@@ -4,24 +4,23 @@ import kai.Ui;
 
 /**
  * Generic default for when the command cannot be parsed at all
- * which performs differently based on whether it is completely empty or not
  * Can be modified as one-use later on if needed?
  */
 public class InvalidCommand extends Command {
-    private final boolean isEmpty;
+    private final String message;
 
     /**
-     * Constructor for isEmpty
+     * Constructor for InvalidCommand
      *
-     * @param isEmpty true if the input is completely blank
+     * @param message the message to be conveyed to the user through Ui
      */
-    public InvalidCommand(boolean isEmpty) {
-        this.isEmpty = isEmpty;
+    public InvalidCommand(String message) {
+        this.message = message;
     }
 
     @Override
     public void invoke(Ui ui) {
-        ui.showInvalidCommandResults(isEmpty);
+        ui.showInvalidCommandResults(message);
     }
 
 }

@@ -56,15 +56,6 @@ public class Ui {
     }
 
     /**
-     * Prints out a message corresponding the MarkCommand error/warning that occurred
-     *
-     * @param message The error message or warning in question
-     */
-    public void showMarkCommandError(String message) {
-        System.out.println(message);
-    }
-
-    /**
      * Prints out the message of a Task being marked complete
      *
      * @param task the Task in question
@@ -75,15 +66,6 @@ public class Ui {
     }
 
     /**
-     * Prints out a message corresponding the UnmarkCommand error/warning that occurred
-     *
-     * @param message The error message or warning in question
-     */
-    public void showUnmarkCommandError(String message) {
-        System.out.println(message);
-    }
-
-    /**
      * Prints out the message of a Task being marked incomplete
      *
      * @param task the Task in question
@@ -91,15 +73,6 @@ public class Ui {
     public void showUnmarkCommandResults(Task task) {
         System.out.println("\t Ok, I've marked this task as not done yet:");
         System.out.println("\t \t " + task.toString());
-    }
-
-    /**
-     * Prints out a message corresponding the DeleteCommand error/warning that occurred
-     *
-     * @param message The error message or warning in question
-     */
-    public void showDeleteCommandError(String message) {
-        System.out.println(message);
     }
 
     /**
@@ -117,16 +90,6 @@ public class Ui {
     }
 
     /**
-     * Prints out a message corresponding the CreateTaskCommand error/warning that occurred
-     * (No such class with this exact name, but the idea is there - eg: CreateEventCommand
-     *
-     * @param message The error message or warning in question
-     */
-    public void showCreateTaskCommandError(String message) {
-        System.out.println(message);
-    }
-
-    /**
      * Prints out the description of the created Task
      * and the current number of Tasks in the TaskList
      * (Applies to any command that creates a Task)
@@ -140,21 +103,11 @@ public class Ui {
     }
 
     /**
-     * Prints out the results of giving a totally invalid Command
+     * Prints out the results of giving an invalid Command
      *
-     * @param isEmpty whether the Command was totally empty or not
+     * @param message the message to be conveyed to the user
      */
-    public void showInvalidCommandResults(boolean isEmpty) {
-        if (isEmpty) {
-            System.out.println("\t I would love to help you, " +
-                    "but could you please give me more to work with?");
-        } else {
-            System.out.println("\t I'm sorry, I don't recognise your command, " +
-                    "the currently supported (case-sensitive, without the quotation marks) commands are:" +
-                    System.lineSeparator() + "\t " +
-                    "'mark', 'unmark', 'delete', 'list', 'todo', 'deadline', and 'event'." +
-                    System.lineSeparator() + "\t " +
-                    "Did you forget to add a space at the end of the commands to input arguments if applicable?");
-        }
+    public void showInvalidCommandResults(String message) {
+        System.out.println(message);
     }
 }

@@ -21,7 +21,7 @@ public class Kai {
     public Kai(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
-        parser = new KaiParser(ui);
+        parser = new KaiParser();
         tasks = new TaskList(storage.load(parser, ui));
 
     }
@@ -36,14 +36,10 @@ public class Kai {
         Scanner sc = new Scanner(System.in);
         while (sc.hasNextLine()) {
             String input = sc.nextLine();
-            Command command = parser.parseCommand(input, tasks);
-            sc.close();
+            Command command = parser.parseCommand(input, tasks, sc);
 
             command.invoke(ui);
             storage.save(tasks);
-
-            // Hack to avoid having to pass a Scanner around or forget to close
-            sc = new Scanner(System.in);
         }
     }
 
