@@ -32,6 +32,7 @@ public class KaiParser {
 
     /**
      * Parses a string representing a Task and transforms it into an actual Task
+     * (Note: Input validation is NOT proofed against save file editing)
      *
      * @param state the string representation of the Task
      * @return the Task corresponding to that representation

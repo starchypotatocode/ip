@@ -23,4 +23,17 @@ public class ToDo extends Task {
     public String toString() {
         return "[T] " + super.toString();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        } else if (this.getClass() != obj.getClass()) {
+            return false;
+        } else if (!super.equals(obj)) {
+            return false;
+        }
+
+        return true;
+    }
 }

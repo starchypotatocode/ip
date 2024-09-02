@@ -37,4 +37,18 @@ public class Event extends Task {
         return "[E] " + super.toString() + " (from: " + from.format(OUTPUT_FORMATTER)
                 + " to: " + to.format(OUTPUT_FORMATTER) + ")";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        } else if (this.getClass() != obj.getClass()) {
+            return false;
+        } else if (!super.equals(obj)) {
+            return false;
+        }
+
+        Event event = (Event) obj;
+        return this.from.equals(event.from) && this.to.equals(event.to);
+    }
 }

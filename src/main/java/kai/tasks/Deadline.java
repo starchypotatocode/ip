@@ -32,4 +32,18 @@ public class Deadline extends Task {
         return "[D] " + super.toString()
                 + " (by: " + deadline.format(OUTPUT_FORMATTER) + ")";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        } else if (this.getClass() != obj.getClass()) {
+            return false;
+        } else if (!super.equals(obj)) {
+            return false;
+        }
+
+        Deadline event = (Deadline) obj;
+        return this.deadline.equals(event.deadline);
+    }
 }
