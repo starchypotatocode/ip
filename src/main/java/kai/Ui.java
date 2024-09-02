@@ -89,8 +89,8 @@ public class Ui {
     }
 
     /**
-     * Prints out the Task(s) in the original TaskList
-     * whose description matched the original search term if any exists
+     * Prints out the Task(s) if any in the original TaskList
+     * whose description matched the original search term
      *
      * @param resultList the TaskList with the remaining Task(s) that match
      */
