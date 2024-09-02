@@ -26,7 +26,6 @@ public class Kai {
 
     }
 
-
     /**
      * Main logic loop for the chatbot
      *

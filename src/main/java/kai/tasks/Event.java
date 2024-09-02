@@ -7,7 +7,6 @@ import java.time.format.DateTimeFormatter;
  * Event implements Task with start and end date information
  */
 public class Event extends Task {
-
     private final LocalDate from;
     private final LocalDate to;
     private static final DateTimeFormatter outputFormatter =

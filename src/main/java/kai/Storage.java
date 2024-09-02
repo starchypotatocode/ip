@@ -28,6 +28,8 @@ public class Storage {
     /**
      * Loads all the Tasks found in the file to memory
      *
+     * @param parser the KaiParser that is used to parse the input
+     * @param ui the Ui that is used to display messages
      * @return ArrayList of Tasks appropriately configured
      */
     public ArrayList<Task> load(KaiParser parser, Ui ui) {

@@ -86,6 +86,7 @@ public class KaiParser {
      * Parses the command given and takes the appropriate response thereof.
      *
      * @param input the command in question
+     * @return the Command to be invoked later on
      */
     public Command parseCommand(String input, TaskList taskList, Scanner sc) {
         if (input.equals("bye")) {
