@@ -41,7 +41,7 @@ public class TaskList {
     /**
      * Check if the TaskList is empty and return accordingly
      *
-     * @return a boolean about if the TaskList is empty
+     * @return a boolean about whether the TaskList is empty
      */
     public boolean isEmpty() {
         return tasks.isEmpty();

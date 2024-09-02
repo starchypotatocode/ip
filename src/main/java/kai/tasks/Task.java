@@ -5,8 +5,7 @@ package kai.tasks;
  * Marked as abstract for easy inheritance for other subclasses
  */
 public abstract class Task {
-
-    protected String desc;
+    private final String desc;
     private boolean isComplete;
 
     /**

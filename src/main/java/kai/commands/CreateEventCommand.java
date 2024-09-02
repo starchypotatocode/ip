@@ -1,5 +1,7 @@
 package kai.commands;
 
+import java.time.LocalDate;
+
 import kai.TaskList;
 import kai.Ui;
 import kai.tasks.Event;
@@ -13,8 +15,8 @@ public class CreateEventCommand extends Command {
     private boolean isInvoked = false;
     private final TaskList taskList;
     private final String desc;
-    private final String from;
-    private final String to;
+    private final LocalDate from;
+    private final LocalDate to;
 
     /**
      * Constructs a CreateEventCommand which creates an Event when invoked
@@ -22,10 +24,10 @@ public class CreateEventCommand extends Command {
      *
      * @param taskList the TaskList the Task will be added to
      * @param desc the description of the Event
-     * @param from the start date of the Event
-     * @param to the end date of the Event
+     * @param from the start date of the Event, in LocalDate format
+     * @param to the end date of the Event, in LocalDate format
      */
-    public CreateEventCommand(TaskList taskList, String desc, String from, String to) {
+    public CreateEventCommand(TaskList taskList, String desc, LocalDate from, LocalDate to) {
         this.taskList = taskList;
         this.desc = desc;
         this.from = from;

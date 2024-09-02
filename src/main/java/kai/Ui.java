@@ -16,7 +16,6 @@ public class Ui {
         System.out.println(message);
     }
 
-
     /**
      * Prints out the welcome message to the chatbot
      */

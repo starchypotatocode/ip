@@ -1,5 +1,7 @@
 package kai.commands;
 
+import java.time.LocalDate;
+
 import kai.TaskList;
 import kai.Ui;
 import kai.tasks.Deadline;
@@ -13,7 +15,7 @@ public class CreateDeadlineCommand extends Command {
     private boolean isInvoked = false;
     private final TaskList taskList;
     private final String desc;
-    private final String deadline;
+    private final LocalDate deadline;
 
     /**
      * Constructs a CreateDeadlineCommand which creates a Deadline when invoked
@@ -21,9 +23,9 @@ public class CreateDeadlineCommand extends Command {
      *
      * @param taskList the TaskList the Task will be added to
      * @param desc the description of the Deadline
-     * @param deadline the deadline in the Deadline
+     * @param deadline the deadline in the Deadline, in LocalDate format
      */
-    public CreateDeadlineCommand(TaskList taskList, String desc, String deadline) {
+    public CreateDeadlineCommand(TaskList taskList, String desc, LocalDate deadline) {
         this.taskList = taskList;
         this.desc = desc;
         this.deadline = deadline;

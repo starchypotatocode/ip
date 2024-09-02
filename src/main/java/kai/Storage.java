@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,6 +28,8 @@ public class Storage {
     /**
      * Loads all the Tasks found in the file to memory
      *
+     * @param parser the KaiParser that is used to parse the input
+     * @param ui the Ui that is used to display messages
      * @return ArrayList of Tasks appropriately configured
      */
     public ArrayList<Task> load(KaiParser parser, Ui ui) {
@@ -42,7 +45,9 @@ public class Storage {
 
                 try {
                     res.add(parser.parseStoredTask(task));
-                } catch (IllegalArgumentException e) {
+                } catch (IllegalArgumentException |
+                        StringIndexOutOfBoundsException |
+                         DateTimeParseException e) {
                     numFailures++;
                     ui.showLoadingError("\t The loading of Task " + numLines +
                             " failed as it was corrupted in disk.");
