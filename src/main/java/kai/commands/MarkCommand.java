@@ -22,7 +22,7 @@ public class MarkCommand extends Command {
 
     @Override
     public void invoke(Ui ui) {
-        task.markComplete();
+        task.setComplete();
         ui.showMarkCommandResults(task);
     }
 }

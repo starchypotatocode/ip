@@ -24,9 +24,9 @@ import kai.tasks.ToDo;
  * Class to keep the logic of parsing input in one place.
  */
 public class KaiParser {
-    private static final DateTimeFormatter inputFormatter =
+    private static final DateTimeFormatter INPUT_FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static final DateTimeFormatter storageFormatter =
+    private static final DateTimeFormatter STORAGE_FORMATTER =
             DateTimeFormatter.ofPattern("MMM dd yyyy");
 
     /**
@@ -37,8 +37,7 @@ public class KaiParser {
      * @throws IllegalArgumentException if the stored Task state is invalid
      */
     public Task parseStoredTask(String state)
-            throws IllegalArgumentException, StringIndexOutOfBoundsException,
-            DateTimeParseException {
+            throws IllegalArgumentException, StringIndexOutOfBoundsException, DateTimeParseException {
         String type = state.substring(0, state.indexOf(" | ") + 3);
         state = state.substring(state.indexOf(" | ") + 3);
 
@@ -48,35 +47,36 @@ public class KaiParser {
         String desc;
         Task res;
         switch (type) {
-        case "T | " -> {
+        case "T | ":
             desc = state;
             res = new ToDo(desc);
-        }
-        case "D | " -> {
+            break;
+        case "D | ":
             desc = state.substring(0, state.indexOf(" | "));
             state = state.substring(state.indexOf(" | ") + 3);
 
-            LocalDate deadline = LocalDate.parse(state, storageFormatter);
+            LocalDate deadline = LocalDate.parse(state, STORAGE_FORMATTER);
             res = new Deadline(desc, deadline);
-        }
-        case "E | " -> {
+            break;
+        case "E | ":
             desc = state.substring(0, state.indexOf(" | "));
             state = state.substring(state.indexOf(" | ") + 3);
 
             LocalDate from = LocalDate.parse(
-                    state.substring(0, state.indexOf(" | ")), storageFormatter);
+                    state.substring(0, state.indexOf(" | ")), STORAGE_FORMATTER);
             state = state.substring(state.indexOf(" | ") + 3);
 
-            LocalDate to = LocalDate.parse(state, storageFormatter);
+            LocalDate to = LocalDate.parse(state, STORAGE_FORMATTER);
             res = new Event(desc, from, to);
-        }
-        default -> throw new IllegalArgumentException();
+            break;
+        default:
+            throw new IllegalArgumentException();
         }
 
         if (isDone) {
-            res.markComplete();
+            res.setComplete();
         } else {
-            res.markIncomplete();
+            res.setIncomplete();
         }
 
         return res;
@@ -144,7 +144,7 @@ public class KaiParser {
                 }
                 try {
                     LocalDate deadline = LocalDate.parse(
-                            input.substring(input.indexOf(" /by ") + 5), inputFormatter);
+                            input.substring(input.indexOf(" /by ") + 5), INPUT_FORMATTER);
                     return new CreateDeadlineCommand(taskList, desc, deadline);
                 } catch (DateTimeParseException e) {
                     return new InvalidCommand("\t The input dates could not be parsed:"
@@ -168,9 +168,9 @@ public class KaiParser {
                 try {
                     LocalDate from = LocalDate.parse(
                             input.substring(input.indexOf(" /from ") + 7, input.indexOf(" /to ")),
-                            inputFormatter);
+                            INPUT_FORMATTER);
                     LocalDate to = LocalDate.parse(
-                            input.substring(input.indexOf(" /to ") + 5), inputFormatter);
+                            input.substring(input.indexOf(" /to ") + 5), INPUT_FORMATTER);
                     if (from.isAfter(to)) {
                         return new InvalidCommand("\t The start date of the event"
                                 + " needs to be before or equal to the end date!");

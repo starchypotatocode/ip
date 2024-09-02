@@ -22,7 +22,7 @@ public class UnmarkCommand extends Command {
 
     @Override
     public void invoke(Ui ui) {
-        task.markIncomplete();
+        task.setIncomplete();
         ui.showUnmarkCommandResults(task);
     }
 }

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class EventTest {
 
     @Test
-    public void serialize_newEvent_success() {
+    public void serialize() {
         Event task = new Event("",
                 LocalDate.of(2009, 12, 11), LocalDate.of(2010, 1, 9));
         Event temp = new Event("meow",
@@ -18,19 +18,19 @@ public class EventTest {
         assertEquals(task.serialize(), "E | 0 |  | Dec 11 2009 | Jan 09 2010");
         assertEquals(temp.serialize(), "E | 0 | meow | Dec 20 1999 | Sep 01 2030");
 
-        task.markComplete();
-        temp.markComplete();
+        task.setComplete();
+        temp.setComplete();
         assertEquals(task.serialize(), "E | 1 |  | Dec 11 2009 | Jan 09 2010");
         assertEquals(temp.serialize(), "E | 1 | meow | Dec 20 1999 | Sep 01 2030");
 
-        task.markIncomplete();
-        temp.markIncomplete();
+        task.setIncomplete();
+        temp.setIncomplete();
         assertEquals(task.serialize(), "E | 0 |  | Dec 11 2009 | Jan 09 2010");
         assertEquals(temp.serialize(), "E | 0 | meow | Dec 20 1999 | Sep 01 2030");
     }
 
     @Test
-    public void toString_newEvent_success() {
+    public void toString_all() {
         Event task = new Event("",
                 LocalDate.of(2009, 12, 11), LocalDate.of(2010, 1, 9));
         Event temp = new Event("meow",
@@ -39,13 +39,13 @@ public class EventTest {
         assertEquals(task.toString(), "[E] [ ]  (from: Dec 11 2009 to: Jan 09 2010)");
         assertEquals(temp.toString(), "[E] [ ] meow (from: Dec 20 1999 to: Sep 01 2030)");
 
-        task.markComplete();
-        temp.markComplete();
+        task.setComplete();
+        temp.setComplete();
         assertEquals(task.toString(), "[E] [X]  (from: Dec 11 2009 to: Jan 09 2010)");
         assertEquals(temp.toString(), "[E] [X] meow (from: Dec 20 1999 to: Sep 01 2030)");
 
-        task.markIncomplete();
-        temp.markIncomplete();
+        task.setIncomplete();
+        temp.setIncomplete();
         assertEquals(task.toString(), "[E] [ ]  (from: Dec 11 2009 to: Jan 09 2010)");
         assertEquals(temp.toString(), "[E] [ ] meow (from: Dec 20 1999 to: Sep 01 2030)");
     }

@@ -22,14 +22,14 @@ public abstract class Task {
     /**
      * Marks the task as complete (even if the task is already complete)
      */
-    public final void markComplete() {
+    public final void setComplete() {
         this.isComplete = true;
     }
 
     /**
      * Marks the task as incomplete (even if the task is currently incomplete)
      */
-    public final void markIncomplete() {
+    public final void setIncomplete() {
         this.isComplete = false;
     }
 
