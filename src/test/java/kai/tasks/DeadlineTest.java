@@ -36,17 +36,17 @@ public class DeadlineTest {
         Deadline temp = new Deadline("meow",
                 LocalDate.of(1899, 10, 4));
 
-        assertEquals(task.toString(), "[E] [ ]  (by: Jun 11 2009)");
-        assertEquals(temp.toString(), "[E] [ ] meow (by: Oct 04 1899)");
+        assertEquals(task.toString(), "[D] [ ]  (by: Jun 11 2009)");
+        assertEquals(temp.toString(), "[D] [ ] meow (by: Oct 04 1899)");
 
         task.markComplete();
         temp.markComplete();
-        assertEquals(task.toString(), "[E] [X]  (by: Jun 11 2009)");
-        assertEquals(temp.toString(), "[E] [X] meow (by: Oct 04 1899)");
+        assertEquals(task.toString(), "[D] [X]  (by: Jun 11 2009)");
+        assertEquals(temp.toString(), "[D] [X] meow (by: Oct 04 1899)");
 
         task.markIncomplete();
         temp.markIncomplete();
-        assertEquals(task.toString(), "[E] [ ]  (by: Jun 11 2009)");
-        assertEquals(temp.toString(), "[E] [ ] meow (by: Oct 04 1899)");
+        assertEquals(task.toString(), "[D] [ ]  (by: Jun 11 2009)");
+        assertEquals(temp.toString(), "[D] [ ] meow (by: Oct 04 1899)");
     }
 }
