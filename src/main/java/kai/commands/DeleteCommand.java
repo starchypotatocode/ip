@@ -10,8 +10,9 @@ import kai.Ui;
  */
 public class DeleteCommand extends Command {
     private boolean isInvoked = false;
-    private final int index;
     private final TaskList taskList;
+    private final int index;
+
 
     /**
      * Constructs DeleteCommand with the relevant TaskList
