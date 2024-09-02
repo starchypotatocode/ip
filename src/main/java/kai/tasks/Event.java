@@ -7,10 +7,10 @@ import java.time.format.DateTimeFormatter;
  * Event implements Task with start and end date information
  */
 public class Event extends Task {
-    private final LocalDate from;
-    private final LocalDate to;
     private static final DateTimeFormatter outputFormatter =
             DateTimeFormatter.ofPattern("MMM dd yyyy");
+    private final LocalDate from;
+    private final LocalDate to;
 
     /**
      * Construct a new ToDo with the specified description, start and end date
@@ -28,13 +28,13 @@ public class Event extends Task {
 
     @Override
     public String serialize() {
-        return "E | " + super.serialize() + " | " +
-                from.format(outputFormatter) + " | " + to.format(outputFormatter);
+        return "E | " + super.serialize() + " | "
+                + from.format(outputFormatter) + " | " + to.format(outputFormatter);
     }
 
     @Override
     public String toString() {
-        return "[E] " + super.toString() + " (from: " + from.format(outputFormatter) +
-                " to: " + to.format(outputFormatter) + ")";
+        return "[E] " + super.toString() + " (from: " + from.format(outputFormatter)
+                + " to: " + to.format(outputFormatter) + ")";
     }
 }

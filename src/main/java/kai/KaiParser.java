@@ -91,15 +91,14 @@ public class KaiParser {
     public Command parseCommand(String input, TaskList taskList, Scanner sc) {
         if (input.equals("bye")) {
             return new ExitCommand(sc);
-        }
-        else if (input.equals("list")) {
+        } else if (input.equals("list")) {
             return new ListCommand(taskList);
         } else if (input.startsWith("mark ")) {
             try {
                 int index = Integer.parseInt(input.substring(5)) - 1;
                 if (index >= taskList.size() || index < 0) {
-                    return new InvalidCommand("\t There is no task corresponding to" +
-                            " the number you entered, please try again.");
+                    return new InvalidCommand("\t There is no task corresponding to"
+                            + " the number you entered, please try again.");
                 } else {
                     return new MarkCommand(taskList.getTask(index));
                 }
@@ -110,8 +109,8 @@ public class KaiParser {
             try {
                 int index = Integer.parseInt(input.substring(7)) - 1;
                 if (index >= taskList.size() || index < 0) {
-                    return new InvalidCommand("\t There is no task corresponding to" +
-                            " the number you entered, please try again.");
+                    return new InvalidCommand("\t There is no task corresponding to"
+                            + " the number you entered, please try again.");
                 }
                 return new UnmarkCommand(taskList.getTask(index));
             } catch (IllegalArgumentException e) {
@@ -121,8 +120,8 @@ public class KaiParser {
             try {
                 int index = Integer.parseInt(input.substring(7)) - 1;
                 if (index >= taskList.size() || index < 0) {
-                    return new InvalidCommand("\t There is no task corresponding to" +
-                            " the number you entered, please try again.");
+                    return new InvalidCommand("\t There is no task corresponding to"
+                            + " the number you entered, please try again.");
                 }
                 return new DeleteCommand(taskList, index);
             } catch (IllegalArgumentException e) {
@@ -130,34 +129,36 @@ public class KaiParser {
             }
         } else if (!input.isEmpty()) {
             if (input.startsWith("todo ")) {
-                    if (input.length() < 6) {
-                        return new InvalidCommand("\t The todo command must have a name for the task.");
-                    }
-                    return new CreateToDoCommand(taskList, input.substring(5));
-                } else if (input.startsWith("deadline ")) {
-                    if (!input.contains(" /by ")) {
-                        return new InvalidCommand("\t The deadline command requires ' /by '" +
-                                " without the quotation marks " + "and then the deadline to work properly.");
-                    }
-                    String desc = input.substring(9, input.indexOf(" /by "));
-                    if (desc.isEmpty()) {
-                        return new InvalidCommand("\t The deadline command must have a name for the task.");
-                    }
-                    try {
-                        LocalDate deadline = LocalDate.parse(
-                                input.substring(input.indexOf(" /by ") + 5), inputFormatter);
-                        return new CreateDeadlineCommand(taskList, desc, deadline);
-                    } catch (DateTimeParseException e) {
-                        return new InvalidCommand("\t The input dates could not be parsed:" + System.lineSeparator() +
-                                "\t Did you follow the format of yyyy-MM-dd and pad 0s in front (eg: 2019-09-15)?");
-                    }
-                } else if (input.startsWith("event ")) {
-                if (!(input.contains(" /from ") && input.contains(" /to ")) ||
-                        input.indexOf(" /from ") >= input.indexOf(" /to ")) {
-                    return new InvalidCommand("\t The event command requires ' /from '" +
-                            " without the quotation marks, the first date," + System.lineSeparator() +
-                            "\t and then ' /to ' without the quotation marks " +
-                            "followed by the second date to work properly.");
+                if (input.length() < 6) {
+                    return new InvalidCommand("\t The todo command must have a name for the task.");
+                }
+                return new CreateToDoCommand(taskList, input.substring(5));
+            } else if (input.startsWith("deadline ")) {
+                if (!input.contains(" /by ")) {
+                    return new InvalidCommand("\t The deadline command requires ' /by '"
+                            + " without the quotation marks " + "and then the deadline to work properly.");
+                }
+                String desc = input.substring(9, input.indexOf(" /by "));
+                if (desc.isEmpty()) {
+                    return new InvalidCommand("\t The deadline command must have a name for the task.");
+                }
+                try {
+                    LocalDate deadline = LocalDate.parse(
+                            input.substring(input.indexOf(" /by ") + 5), inputFormatter);
+                    return new CreateDeadlineCommand(taskList, desc, deadline);
+                } catch (DateTimeParseException e) {
+                    return new InvalidCommand("\t The input dates could not be parsed:"
+                            + System.lineSeparator()
+                            + "\t Did you follow the format of yyyy-MM-dd and pad 0s in front (eg: 2019-09-15)?");
+                }
+            } else if (input.startsWith("event ")) {
+                if (!(input.contains(" /from ") && input.contains(" /to "))
+                        || input.indexOf(" /from ") >= input.indexOf(" /to ")) {
+                    return new InvalidCommand("\t The event command requires ' /from '"
+                            + " without the quotation marks, the first date,"
+                            + System.lineSeparator()
+                            + "\t and then ' /to ' without the quotation marks"
+                            + " followed by the second date to work properly.");
                 }
                 String desc = input.substring(6, input.indexOf(" /from "));
                 if (desc.isEmpty()) {
@@ -171,25 +172,27 @@ public class KaiParser {
                     LocalDate to = LocalDate.parse(
                             input.substring(input.indexOf(" /to ") + 5), inputFormatter);
                     if (from.isAfter(to)) {
-                        return new InvalidCommand("\t The start date of the event needs to be before or equal to the end date!");
+                        return new InvalidCommand("\t The start date of the event"
+                                + " needs to be before or equal to the end date!");
                     }
                     return new CreateEventCommand(taskList, desc, from, to);
                 } catch (DateTimeParseException e) {
-                    return new InvalidCommand("\t The input dates could not be parsed:" + System.lineSeparator() +
-                            "\t Did you follow the format of yyyy-MM-dd and pad 0s in front (eg: 2019-09-15)?");
+                    return new InvalidCommand("\t The input dates could not be parsed:" + System.lineSeparator()
+                            + "\t Did you follow the format of yyyy-MM-dd and pad 0s in front (eg: 2019-09-15)?");
                 }
 
             } else {
-                return new InvalidCommand("\t I'm sorry, I don't recognise your command, " +
-                        "the currently supported (case-sensitive, without the quotation marks) commands are:" +
-                        System.lineSeparator() + "\t " +
-                        "'mark', 'unmark', 'delete', 'list', 'todo', 'deadline', and 'event'." +
-                        System.lineSeparator() + "\t " +
-                        "Did you forget to add a space at the end of the commands to input arguments if applicable?");
+                return new InvalidCommand("\t I'm sorry, I don't recognise your command, "
+                        + "the currently supported (case-sensitive, without the quotation marks) commands are:"
+                        + System.lineSeparator()
+                        + "\t 'mark', 'unmark', 'delete', 'list', 'todo', 'deadline', and 'event'."
+                        + System.lineSeparator()
+                        + "\t Did you forget to add a space at the end of the commands"
+                        + " to input arguments if applicable?");
 
             }
         }
-        return new InvalidCommand("\t I would love to help you, " +
-                "but could you please give me more to work with?");
+        return new InvalidCommand("\t I would love to help you,"
+                + " but could you please give me more to work with?");
     }
 }

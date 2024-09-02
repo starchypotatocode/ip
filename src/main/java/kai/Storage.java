@@ -45,19 +45,19 @@ public class Storage {
 
                 try {
                     res.add(parser.parseStoredTask(task));
-                } catch (IllegalArgumentException |
-                        StringIndexOutOfBoundsException |
-                         DateTimeParseException e) {
+                } catch (IllegalArgumentException
+                         | StringIndexOutOfBoundsException
+                         | DateTimeParseException e) {
                     numFailures++;
-                    ui.showLoadingError("\t The loading of Task " + numLines +
-                            " failed as it was corrupted in disk.");
+                    ui.showLoadingError("\t The loading of Task "
+                            + numLines + " failed as it was corrupted in disk.");
                 }
             }
 
             sc.close();
             if (numFailures > 0) {
-                ui.showLoadingError("\t In total, " + numFailures + "/" +
-                        (numFailures + res.size()) + " tasks failed to load from disk.");
+                ui.showLoadingError("\t In total, " + numFailures + "/"
+                        + (numFailures + res.size()) + " tasks failed to load from disk.");
             }
             return res;
         } catch (FileNotFoundException e) {
@@ -66,12 +66,12 @@ public class Storage {
                 File saveDirectory = new File(saveFile.getAbsoluteFile().getParent());
 
                 if (!(saveDirectory.mkdirs() && saveFile.createNewFile())) {
-                    ui.showLoadingError("\t Warning: There is no save file for Tasks," +
-                            " and one could not be created.");
+                    ui.showLoadingError("\t Warning: There is no save file for Tasks,"
+                            + " and one could not be created.");
                 }
             } catch (IOException e2) {
-                ui.showLoadingError("\t Warning: There is no save file for Tasks," +
-                        " and one could not be created.");
+                ui.showLoadingError("\t Warning: There is no save file for Tasks,"
+                        + " and one could not be created.");
             }
             return new ArrayList<>();
         }

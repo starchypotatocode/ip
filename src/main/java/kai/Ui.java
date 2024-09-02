@@ -20,10 +20,10 @@ public class Ui {
      * Prints out the welcome message to the chatbot
      */
     public void showWelcomeMessage() {
-        String logo = "\t __ ___   _  _____" + System.lineSeparator() +
-                "\t | |/ /  /_\\ |_ _|" + System.lineSeparator() +
-                "\t |   <  / _ \\ | |" + System.lineSeparator() +
-                "\t |_|\\_\\/_/ \\_\\___|";
+        String logo = "\t __ ___   _  _____" + System.lineSeparator()
+                + "\t | |/ /  /_\\ |_ _|" + System.lineSeparator()
+                + "\t |   <  / _ \\ | |" + System.lineSeparator()
+                + "\t |_|\\_\\/_/ \\_\\___|";
         System.out.println("\t Hello! I'm" + System.lineSeparator() + logo);
         System.out.println("\t What can I do for you?");
     }
@@ -49,8 +49,8 @@ public class Ui {
             System.out.println("\t Here are the tasks in your list:");
         }
         for (int i = 0; i < taskList.size(); i++) {
-            System.out.println("\t " + (i + 1) + ". " +
-                    taskList.getTask(i).toString());
+            System.out.println("\t " + (i + 1) + ". "
+                    + taskList.getTask(i).toString());
         }
     }
 
@@ -84,8 +84,8 @@ public class Ui {
     public void showDeleteCommandResults(String taskDesc, int tasksLeft) {
         System.out.println("\t Noted. This task has been removed:");
         System.out.println("\t \t " + taskDesc);
-        System.out.println("\t " + "There is now " + tasksLeft +
-                " task(s) in the list.");
+        System.out.println("\t " + "There is now " + tasksLeft
+                + " task(s) in the list.");
     }
 
     /**

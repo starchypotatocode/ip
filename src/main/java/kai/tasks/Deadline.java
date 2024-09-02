@@ -7,9 +7,9 @@ import java.time.format.DateTimeFormatter;
  * Deadline implements Task with additional deadline functionality
  */
 public class Deadline extends Task {
-    private final LocalDate deadline;
     private static final DateTimeFormatter outputFormatter =
             DateTimeFormatter.ofPattern("MMM dd yyyy");
+    private final LocalDate deadline;
 
     /**
      * Constructs a new Deadline with the specified description and deadline
@@ -29,7 +29,7 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return "[D] " + super.toString() +
-                " (by: " + deadline.format(outputFormatter) + ")";
+        return "[D] " + super.toString()
+                + " (by: " + deadline.format(outputFormatter) + ")";
     }
 }
