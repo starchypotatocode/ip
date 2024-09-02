@@ -28,7 +28,6 @@ public class Kai {
 
     /**
      * Main logic loop for the chatbot
-     *
      */
     public void run() {
         ui.showWelcomeMessage();
