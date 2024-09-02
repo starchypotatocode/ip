@@ -62,7 +62,10 @@ public class Storage {
             return res;
         } catch (FileNotFoundException e) {
             try {
-                if (!new File(filePath).createNewFile()) {
+                File saveFile = new File(filePath);
+                File saveDirectory = new File(saveFile.getAbsoluteFile().getParent());
+
+                if (!(saveDirectory.mkdirs() && saveFile.createNewFile())) {
                     ui.showLoadingError("\t Warning: There is no save file for Tasks," +
                             " and one could not be created.");
                 }
