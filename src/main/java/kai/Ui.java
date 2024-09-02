@@ -89,6 +89,24 @@ public class Ui {
     }
 
     /**
+     * Prints out the Task(s) in the original TaskList
+     * whose description matched the original search term if any exists
+     *
+     * @param resultList the TaskList with the remaining Task(s) that match
+     */
+    public void showFindCommandResults(TaskList resultList) {
+        if (resultList.isEmpty()) {
+            System.out.println("\t No task's description matched the search keyword you input.");
+        } else {
+            System.out.println("\t Here are the matching tasks in your list:");
+        }
+        for (int i = 0; i < resultList.size(); i++) {
+            System.out.println("\t " + (i + 1) + ". " +
+                    resultList.getTask(i).toString());
+        }
+    }
+
+    /**
      * Prints out the description of the created Task
      * and the current number of Tasks in the TaskList
      * (Applies to any command that creates a Task)

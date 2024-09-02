@@ -11,6 +11,7 @@ import kai.commands.CreateEventCommand;
 import kai.commands.CreateToDoCommand;
 import kai.commands.DeleteCommand;
 import kai.commands.ExitCommand;
+import kai.commands.FindCommand;
 import kai.commands.InvalidCommand;
 import kai.commands.ListCommand;
 import kai.commands.MarkCommand;
@@ -91,9 +92,14 @@ public class KaiParser {
     public Command parseCommand(String input, TaskList taskList, Scanner sc) {
         if (input.equals("bye")) {
             return new ExitCommand(sc);
-        }
-        else if (input.equals("list")) {
+        } else if (input.equals("list")) {
             return new ListCommand(taskList);
+        } else if (input.startsWith("find ")) {
+            String searchTerm = input.substring(5);
+            if (searchTerm.isEmpty()) {
+                return new InvalidCommand("\t The find command requires a non-blank search term to work properly.");
+            }
+            return new FindCommand(taskList, searchTerm);
         } else if (input.startsWith("mark ")) {
             try {
                 int index = Integer.parseInt(input.substring(5)) - 1;
@@ -183,7 +189,7 @@ public class KaiParser {
                 return new InvalidCommand("\t I'm sorry, I don't recognise your command, " +
                         "the currently supported (case-sensitive, without the quotation marks) commands are:" +
                         System.lineSeparator() + "\t " +
-                        "'mark', 'unmark', 'delete', 'list', 'todo', 'deadline', and 'event'." +
+                        "'bye', 'list', 'find', 'mark', 'unmark', 'delete', 'todo', 'deadline', and 'event'." +
                         System.lineSeparator() + "\t " +
                         "Did you forget to add a space at the end of the commands to input arguments if applicable?");
 
