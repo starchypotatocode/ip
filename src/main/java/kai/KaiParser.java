@@ -21,7 +21,7 @@ import kai.tasks.Task;
 import kai.tasks.ToDo;
 
 /**
- * Class to keep the logic of parsing input in one place.
+ * Parser handles the logic of parsing input in one place
  */
 public class KaiParser {
     private static final DateTimeFormatter inputFormatter =
@@ -35,6 +35,8 @@ public class KaiParser {
      * @param state the string representation of the Task
      * @return the Task corresponding to that representation
      * @throws IllegalArgumentException if the stored Task state is invalid
+     * @throws StringIndexOutOfBoundsException if the stored Task state is invalid
+     * @throws DateTimeParseException if the stored Task state is invalid
      */
     public Task parseStoredTask(String state)
             throws IllegalArgumentException, StringIndexOutOfBoundsException,
@@ -83,9 +85,11 @@ public class KaiParser {
     }
 
     /**
-     * Parses the command given and takes the appropriate response thereof.
+     * Parses the command given and takes the appropriate response thereof
      *
-     * @param input the command in question
+     * @param input the string corresponding to the command in question
+     * @param taskList the TaskList some of these commands work on
+     * @param sc the Scanner that may need to closed
      * @return the Command to be invoked later on
      */
     public Command parseCommand(String input, TaskList taskList, Scanner sc) {
