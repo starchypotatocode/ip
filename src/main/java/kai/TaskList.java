@@ -30,7 +30,7 @@ public class TaskList {
 
     /**
      * Remove a Task from the TaskList, based on the index given
-     * (Assumes the index given is valid)
+     * (Assumes the index given is valid, input sanitation is done elsewhere)
      *
      * @param index the index of the Task to be deleted
      */

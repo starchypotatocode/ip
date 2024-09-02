@@ -14,6 +14,7 @@ public class Event extends Task {
 
     /**
      * Construct a new ToDo with the specified description, start and end date
+     * (Likewise, assumes that from <= to and will not check during creation)
      *
      * @param desc the description of the Task
      * @param from the start date of the Task, represented as a LocalDate
