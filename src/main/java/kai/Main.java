@@ -25,6 +25,7 @@ public class Main extends Application {
             stage.setMinHeight(220);
             stage.setMinWidth(417);
             fxmlLoader.<MainWindow>getController().initializeWithKai(kai); // inject the Kai instance
+            stage.setTitle("Kai Chatbot");
             stage.show();
 
 
