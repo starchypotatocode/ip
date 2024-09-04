@@ -6,33 +6,39 @@ import kai.tasks.Task;
  * Ui handles output to the screen
  */
 public class Ui {
+    private StringBuilder pendingDisplay = new StringBuilder();
 
     /**
-     * Prints out a message corresponding the loading error/warning that occurred
+     * Stors the message corresponding the loading error/warning that occurred
+     * for later printing
      *
      * @param message The error message or warning in question
      */
     public void showLoadingError(String message) {
-        System.out.println(message);
+        pendingDisplay.append(message);
     }
 
     /**
-     * Prints out the welcome message to the chatbot
+     * Stores the welcome message to the chatbot
+     * for later printing
      */
     public void showWelcomeMessage() {
         String logo = "\t __ ___   _  _____" + System.lineSeparator()
                 + "\t | |/ /  /_\\ |_ _|" + System.lineSeparator()
                 + "\t |   <  / _ \\ | |" + System.lineSeparator()
                 + "\t |_|\\_\\/_/ \\_\\___|";
-        System.out.println("\t Hello! I'm" + System.lineSeparator() + logo);
-        System.out.println("\t What can I do for you?");
+        String res = "\t Hello! I'm" + System.lineSeparator()
+                + logo + System.lineSeparator()
+                + "\t What can I do for you?" + System.lineSeparator();
+        pendingDisplay.append(res);
     }
 
     /**
      * Prints out the exit message of the chatbot and then force exits
      */
     public void exit() {
-        System.out.println("\t Bye. Hope to see you again soon!");
+        // Pending Fixing - shift the control to somewhere else?
+        pendingDisplay.append("\t Bye. Hope to see you again soon!");
         // Kai.closeResources()?
         System.exit(0);
     }
@@ -43,14 +49,17 @@ public class Ui {
      * @param taskList the TaskList in question
      */
     public void showListCommandResults(TaskList taskList) {
+        String temp;
         if (taskList.isEmpty()) {
-            System.out.println("\t There are no tasks to list. Congratulations!");
+            temp = "\t There are no tasks to list. Congratulations!" + System.lineSeparator();
         } else {
-            System.out.println("\t Here are the tasks in your list:");
+            temp = "\t Here are the tasks in your list:" + System.lineSeparator();
         }
+        pendingDisplay.append(temp);
+
         for (int i = 0; i < taskList.size(); i++) {
-            System.out.println("\t " + (i + 1) + ". "
-                    + taskList.getTask(i).toString());
+            pendingDisplay.append("\t " + (i + 1) + ". "
+                    + taskList.getTask(i).toString() + System.lineSeparator());
         }
     }
 
@@ -60,8 +69,8 @@ public class Ui {
      * @param task the Task in question
      */
     public void showMarkCommandResults(Task task) {
-        System.out.println("\t Nice! I've marked this task as done:");
-        System.out.println("\t \t " + task.toString());
+        pendingDisplay.append("\t Nice! I've marked this task as done:" + System.lineSeparator());
+        pendingDisplay.append("\t \t " + task.toString() + System.lineSeparator());
     }
 
     /**
@@ -70,8 +79,8 @@ public class Ui {
      * @param task the Task in question
      */
     public void showUnmarkCommandResults(Task task) {
-        System.out.println("\t Ok, I've marked this task as not done yet:");
-        System.out.println("\t \t " + task.toString());
+        pendingDisplay.append("\t Ok, I've marked this task as not done yet:" + System.lineSeparator());
+        pendingDisplay.append("\t \t " + task.toString() + System.lineSeparator());
     }
 
     /**
@@ -82,10 +91,10 @@ public class Ui {
      * @param tasksLeft the number of Tasks that are left
      */
     public void showDeleteCommandResults(String taskDesc, int tasksLeft) {
-        System.out.println("\t Noted. This task has been removed:");
-        System.out.println("\t \t " + taskDesc);
-        System.out.println("\t " + "There is now " + tasksLeft
-                + " task(s) in the list.");
+        pendingDisplay.append("\t Noted. This task has been removed:" + System.lineSeparator());
+        pendingDisplay.append("\t \t " + taskDesc + System.lineSeparator());
+        pendingDisplay.append("\t There is now " + tasksLeft
+                + " task(s) in the list." + System.lineSeparator());
     }
 
     /**
@@ -95,14 +104,18 @@ public class Ui {
      * @param resultList the TaskList with the remaining Task(s) that match
      */
     public void showFindCommandResults(TaskList resultList) {
+        String temp;
         if (resultList.isEmpty()) {
-            System.out.println("\t No task's description matched the search keyword you input.");
+            temp = "\t No task's description matched the search keyword you input."
+                    + System.lineSeparator();
         } else {
-            System.out.println("\t Here are the matching tasks in your list:");
+            temp = "\t Here are the matching tasks in your list:" + System.lineSeparator();
         }
+        pendingDisplay.append(temp);
+
         for (int i = 0; i < resultList.size(); i++) {
-            System.out.println("\t " + (i + 1) + ". "
-                    + resultList.getTask(i).toString());
+            pendingDisplay.append("\t " + (i + 1) + ". "
+                    + resultList.getTask(i).toString() + System.lineSeparator());
         }
     }
 
@@ -114,9 +127,11 @@ public class Ui {
      * @param taskList the TaskList in question
      */
     public void showCreateTaskCommandResults(TaskList taskList) {
-        System.out.println("\t Task Added:");
-        System.out.println("\t \t " + taskList.getTask(taskList.size() - 1).toString());
-        System.out.println("\t " + "There is now " + taskList.size() + " task(s) in the list.");
+        pendingDisplay.append("\t Task Added:" + System.lineSeparator());
+        pendingDisplay.append("\t \t " +
+                taskList.getTask(taskList.size() - 1).toString() + System.lineSeparator());
+        pendingDisplay.append("\t " + "There is now " + taskList.size()
+                + " task(s) in the list." + System.lineSeparator());
     }
 
     /**
@@ -125,6 +140,17 @@ public class Ui {
      * @param message the message to be conveyed to the user
      */
     public void showInvalidCommandResults(String message) {
-        System.out.println(message);
+        pendingDisplay.append(message + System.lineSeparator());
+    }
+
+    /**
+     * Displays the accumulated message and then deletes it
+     *
+     * @return the String to be displayed through the GUI
+     */
+    public String displayPendingMessage() {
+        String message = pendingDisplay.toString();
+        pendingDisplay = new StringBuilder();
+        return message;
     }
 }

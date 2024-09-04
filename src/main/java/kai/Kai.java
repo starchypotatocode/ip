@@ -27,27 +27,15 @@ public class Kai {
     }
 
     /**
-     * Main logic loop for the chatbot
+     * Runs the appropriate Command and then gets the response to output
      */
-    public void run() {
+    public String getResponse(String input) {
         ui.showWelcomeMessage();
-        Scanner sc = new Scanner(System.in);
-        while (sc.hasNextLine()) {
-            String input = sc.nextLine();
-            Command command = parser.parseCommand(input, tasks, sc);
-
-            command.invoke(ui);
-            storage.save(tasks);
-        }
-    }
-
-    /**
-     * Initial entry point of the entire application,
-     * creates a Kai class to handle further details
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        new Kai("data/tasks.txt").run();
+        Scanner sc = new Scanner(System.in); //hack to clear later
+        Command command = parser.parseCommand(input, tasks, sc);
+        command.invoke(ui);
+        storage.save(tasks);
+        sc.close();
+        return ui.displayPendingMessage();
     }
 }
