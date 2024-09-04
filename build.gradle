@@ -48,7 +48,7 @@ test {
 }
 
 application {
-    mainClass.set("kai.Kai")
+    mainClass.set("kai.Launcher")
 }
 
 shadowJar {
