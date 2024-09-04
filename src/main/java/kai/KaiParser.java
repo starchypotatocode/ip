@@ -3,7 +3,6 @@ package kai;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Scanner;
 
 import kai.commands.Command;
 import kai.commands.CreateDeadlineCommand;
@@ -91,12 +90,11 @@ public class KaiParser {
      *
      * @param input the string corresponding to the command in question
      * @param taskList the TaskList some of these commands work on
-     * @param sc the Scanner that may need to closed
      * @return the Command to be invoked later on
      */
-    public Command parseCommand(String input, TaskList taskList, Scanner sc) {
+    public Command parseCommand(String input, TaskList taskList) {
         if (input.equals("bye")) {
-            return new ExitCommand(sc);
+            return new ExitCommand();
         } else if (input.equals("list")) {
             return new ListCommand(taskList);
         } else if (input.startsWith("find ")) {

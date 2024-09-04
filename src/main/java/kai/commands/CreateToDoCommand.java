@@ -1,8 +1,9 @@
 package kai.commands;
 
 import kai.TaskList;
-import kai.Ui;
 import kai.tasks.ToDo;
+import kai.ui.Ui;
+
 
 /**
  * This Command creates an ToDo and adds it to the TaskList

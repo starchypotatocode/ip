@@ -1,8 +1,8 @@
 package kai;
 
-import java.util.Scanner;
-
 import kai.commands.Command;
+import kai.commands.ExitCommand;
+import kai.ui.Ui;
 
 /**
  * Kai is the main control logic for chatbot functionality
@@ -12,6 +12,7 @@ public class Kai {
     private final Storage storage;
     private final TaskList tasks;
     private final KaiParser parser;
+    private boolean shouldRun = true;
 
     /**
      * Constructor for the main chatbot class
@@ -23,19 +24,36 @@ public class Kai {
         storage = new Storage(filePath);
         parser = new KaiParser();
         tasks = new TaskList(storage.load(parser, ui));
+    }
 
+    /**
+     * Gets the startup message (including warnings or errors)
+     * for the application to be displayed through the GUI
+     */
+    public String getStartupMessage() {
+        ui.showWelcomeMessage();
+        return ui.displayPendingMessage();
     }
 
     /**
      * Runs the appropriate Command and then gets the response to output
      */
     public String getResponse(String input) {
-        ui.showWelcomeMessage();
-        Scanner sc = new Scanner(System.in); //hack to clear later
-        Command command = parser.parseCommand(input, tasks, sc);
+        Command command = parser.parseCommand(input, tasks);
         command.invoke(ui);
+        if (command instanceof ExitCommand) { // couldn't think of a better solution w/o breaking abstraction
+            shouldRun = false;
+        }
         storage.save(tasks);
-        sc.close();
         return ui.displayPendingMessage();
+    }
+
+    /**
+     * A method to check if the program should continue running
+     *
+     * @return whether the entire program should terminate
+     */
+    public boolean continueRunning() {
+        return shouldRun;
     }
 }

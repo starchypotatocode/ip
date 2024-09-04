@@ -3,8 +3,9 @@ package kai.commands;
 import java.util.ArrayList;
 
 import kai.TaskList;
-import kai.Ui;
 import kai.tasks.Task;
+import kai.ui.Ui;
+
 
 /**
  * This Command finds and displays the Tasks in the TaskList

@@ -1,7 +1,8 @@
 package kai.commands;
 
-import kai.Ui;
 import kai.tasks.Task;
+import kai.ui.Ui;
+
 
 /**
  * This Command marks the Task given as incomplete

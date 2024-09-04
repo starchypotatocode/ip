@@ -1,4 +1,4 @@
-package kai;
+package kai.ui;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import kai.MainWindow;
 
 /**
  * Represents a dialog box consisting of an ImageView to represent the speaker's face
@@ -24,6 +25,13 @@ public class DialogBox extends HBox {
     @FXML
     private ImageView displayPicture;
 
+
+    /**
+     * Constructs a Dialog box with the text and image to display
+     *
+     * @param text the text in question
+     * @param img the image in question
+     */
     private DialogBox(String text, Image img) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/DialogBox.fxml"));
@@ -53,7 +61,7 @@ public class DialogBox extends HBox {
         return new DialogBox(text, img);
     }
 
-    public static DialogBox getDukeDialog(String text, Image img) {
+    public static DialogBox getKaiDialog(String text, Image img) {
         var db = new DialogBox(text, img);
         db.flip();
         return db;

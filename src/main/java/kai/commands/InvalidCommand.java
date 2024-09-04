@@ -1,6 +1,6 @@
 package kai.commands;
 
-import kai.Ui;
+import kai.ui.Ui;
 
 /**
  * Generic default for when the command cannot be parsed at all

@@ -3,8 +3,9 @@ package kai.commands;
 import java.time.LocalDate;
 
 import kai.TaskList;
-import kai.Ui;
 import kai.tasks.Deadline;
+import kai.ui.Ui;
+
 
 /**
  * This Command creates a Deadline and adds it to the TaskList

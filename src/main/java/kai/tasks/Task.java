@@ -1,7 +1,5 @@
 package kai.tasks;
 
-import java.util.Objects;
-
 /**
  * Framework for a Task for the rest of the chatbot to work with
  * Marked as abstract for easy inheritance for other subclasses

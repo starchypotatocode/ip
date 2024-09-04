@@ -3,8 +3,9 @@ package kai.commands;
 import java.time.LocalDate;
 
 import kai.TaskList;
-import kai.Ui;
 import kai.tasks.Event;
+import kai.ui.Ui;
+
 
 /**
  * This Command creates an Event and adds it to the TaskList

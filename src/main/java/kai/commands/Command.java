@@ -1,6 +1,6 @@
 package kai.commands;
 
-import kai.Ui;
+import kai.ui.Ui;
 
 /**
  * Abstract base for other concrete Commands to inherit from

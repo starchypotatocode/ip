@@ -1,7 +1,7 @@
 package kai.commands;
 
 import kai.TaskList;
-import kai.Ui;
+import kai.ui.Ui;
 
 /**
  * This Command lists out the Tasks present when invoked
