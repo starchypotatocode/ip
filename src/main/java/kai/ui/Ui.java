@@ -157,6 +157,7 @@ public class Ui {
     public String displayPendingMessage() {
         String message = pendingDisplay.toString();
         pendingDisplay = new StringBuilder();
+        assert !message.isEmpty();
         return message;
     }
 }
