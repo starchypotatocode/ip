@@ -40,6 +40,7 @@ public class Storage {
             ArrayList<Task> res = new ArrayList<>();
 
             Scanner sc = new Scanner(new File(filePath));
+
             while (sc.hasNextLine()) {
                 String task = sc.nextLine();
                 numLines++;

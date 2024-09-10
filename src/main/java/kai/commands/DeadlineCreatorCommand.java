@@ -3,42 +3,39 @@ package kai.commands;
 import java.time.LocalDate;
 
 import kai.TaskList;
-import kai.tasks.Event;
+import kai.tasks.Deadline;
 import kai.ui.Ui;
 
 
 /**
- * This Command creates an Event and adds it to the TaskList
+ * This Command creates a Deadline and adds it to the TaskList
  * It is immediately implemented as one-use
  * to avoid potential re-use issues down the line
  */
-public class CreateEventCommand extends Command {
+public class DeadlineCreatorCommand extends Command {
     private boolean isInvoked = false;
     private final TaskList taskList;
     private final String desc;
-    private final LocalDate from;
-    private final LocalDate to;
+    private final LocalDate deadline;
 
     /**
-     * Constructs a CreateEventCommand which creates an Event when invoked
+     * Constructs a CreateDeadlineCommand which creates a Deadline when invoked
      * and adds it to the taskList afterward
      *
      * @param taskList the TaskList the Task will be added to
-     * @param desc the description of the Event
-     * @param from the start date of the Event, in LocalDate format
-     * @param to the end date of the Event, in LocalDate format
+     * @param desc the description of the Deadline
+     * @param deadline the deadline in the Deadline, in LocalDate format
      */
-    public CreateEventCommand(TaskList taskList, String desc, LocalDate from, LocalDate to) {
+    public DeadlineCreatorCommand(TaskList taskList, String desc, LocalDate deadline) {
         this.taskList = taskList;
         this.desc = desc;
-        this.from = from;
-        this.to = to;
+        this.deadline = deadline;
     }
 
     @Override
     public void invoke(Ui ui) {
         if (!isInvoked) {
-            Event task = new Event(desc, from, to);
+            Deadline task = new Deadline(desc, deadline);
             taskList.add(task);
             ui.showCreateTaskCommandResults(taskList);
         } else {
