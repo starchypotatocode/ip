@@ -35,7 +35,6 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
-
     }
 
     /**
@@ -44,13 +43,9 @@ public class MainWindow extends AnchorPane {
      * @param k the Kai instance in questions
      */
     public void initializeWithKai(Kai k) {
-        this.kai = k;
+        kai = k;
         String message = kai.getStartupMessage();
         dialogContainer.getChildren().add(DialogBox.getKaiDialog(message, kaiImage));
-    }
-
-    public void terminate() {
-
     }
 
     /**

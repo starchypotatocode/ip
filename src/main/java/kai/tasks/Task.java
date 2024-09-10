@@ -15,6 +15,7 @@ public abstract class Task {
      * @param desc the description of the Task
      */
     public Task(String desc) {
+        assert !desc.isEmpty();
         this.desc = desc;
         this.isComplete = false;
     }
