@@ -23,6 +23,7 @@ public class Storage {
      * @param filePath the path of the file the Task states are found in
      */
     public Storage(String filePath) {
+        assert !filePath.isEmpty();
         this.filePath = filePath;
     }
 

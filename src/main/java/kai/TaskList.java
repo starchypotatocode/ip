@@ -32,6 +32,7 @@ public class TaskList {
      * @param task the Task to be added
      */
     public void add(Task task) {
+        assert task != null;
         tasks.add(task);
     }
 
@@ -64,6 +65,7 @@ public class TaskList {
     }
 
     public Task getTask(int index) {
+        assert tasks.get(index) != null;
         return tasks.get(index);
     }
 }

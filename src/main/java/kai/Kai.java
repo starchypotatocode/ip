@@ -40,6 +40,7 @@ public class Kai {
      */
     public String getResponse(String input) {
         Command command = parser.parseCommand(input, tasks);
+        assert command != null;
         command.invoke(ui);
         if (command instanceof ExitCommand) { // couldn't think of a better solution w/o breaking abstraction
             shouldRun = false;
