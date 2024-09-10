@@ -11,6 +11,13 @@ public class TaskList {
     private final ArrayList<Task> tasks;
 
     /**
+     * Constructor of empty TaskList
+     */
+    public TaskList() {
+        tasks = new ArrayList<>();
+    }
+
+    /**
      * Constructor of TaskList with the given tasks
      *
      * @param tasks the list of tasks in the class

@@ -19,14 +19,14 @@ public class KaiParserTest {
 
     @Test
     public void parseStoredTask_validTasks() {
-        ToDo toDo1 = new ToDo("");
+        ToDo toDo1 = new ToDo(" ");
         ToDo toDo2 = new ToDo("woof");
-        assertEquals(new KaiParser().parseStoredTask("T | 0 | "), toDo1);
+        assertEquals(new KaiParser().parseStoredTask("T | 0 |  "), toDo1);
         assertEquals(new KaiParser().parseStoredTask("T | 0 | woof"), toDo2);
 
         toDo1.setComplete();
         toDo2.setComplete();
-        assertEquals(new KaiParser().parseStoredTask("T | 1 | "), toDo1);
+        assertEquals(new KaiParser().parseStoredTask("T | 1 |  "), toDo1);
         assertEquals(new KaiParser().parseStoredTask("T | 1 | woof"), toDo2);
 
         Deadline deadline1 = new Deadline(" ", LocalDate.of(2015, 3, 16));

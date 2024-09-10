@@ -10,7 +10,7 @@ import kai.ui.Ui;
  * It is immediately implemented as one-use
  * to avoid potential re-use issues down the line
  */
-public class CreateToDoCommand extends Command {
+public class ToDoCreatorCommand extends Command {
     private boolean isInvoked = false;
     private final TaskList taskList;
     private final String desc;
@@ -22,7 +22,7 @@ public class CreateToDoCommand extends Command {
      * @param taskList the TaskList the Task will be added to
      * @param desc the description of the ToDo
      */
-    public CreateToDoCommand(TaskList taskList, String desc) {
+    public ToDoCreatorCommand(TaskList taskList, String desc) {
         this.taskList = taskList;
         this.desc = desc;
     }
