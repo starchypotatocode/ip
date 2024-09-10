@@ -36,7 +36,9 @@ public class TaskList {
     public boolean add(Task task) {
         assert task != null;
         for (Task temp : tasks) {
-            if (temp.equals(task)) return false;
+            if (temp.equals(task)) {
+                return false;
+            }
         }
         tasks.add(task);
         return true;
