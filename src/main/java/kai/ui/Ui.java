@@ -140,6 +140,14 @@ public class Ui {
     }
 
     /**
+     * Stores the message of a valid but duplicate Task being added via commands
+     */
+    public void showDuplicateTaskMessage() {
+        pendingDisplay.append("\t The (valid) Task could not be added, as an identical Task is already present."
+                + System.lineSeparator());
+    }
+
+    /**
      * Stores the results of giving an invalid Command
      * for later printing
      *

@@ -36,8 +36,12 @@ public class DeadlineCreatorCommand extends Command {
     public void invoke(Ui ui) {
         if (!isInvoked) {
             Deadline task = new Deadline(desc, deadline);
-            taskList.add(task);
-            ui.showCreateTaskCommandResults(taskList);
+            boolean success = taskList.add(task);
+            if (success) {
+                ui.showCreateTaskCommandResults(taskList);
+            } else {
+                ui.showDuplicateTaskMessage();
+            }
         } else {
             // Ui error or debugging log maybe?
         }

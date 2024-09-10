@@ -28,12 +28,18 @@ public class TaskList {
 
     /**
      * Add a Task to the TaskList
+     * (Duplicates are not allowed and are checked for)
      *
      * @param task the Task to be added
+     * @return whether the addition was successful
      */
-    public void add(Task task) {
+    public boolean add(Task task) {
         assert task != null;
+        for (Task temp : tasks) {
+            if (temp.equals(task)) return false;
+        }
         tasks.add(task);
+        return true;
     }
 
     /**
