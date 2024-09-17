@@ -21,7 +21,7 @@ import kai.tasks.Task;
 import kai.tasks.ToDo;
 
 /**
- * Parser handles the logic of parsing input in one place
+ * Parser handles the logic of parsing input in one place.
  */
 public class KaiParser {
     private static final DateTimeFormatter INPUT_FORMATTER =
@@ -30,14 +30,14 @@ public class KaiParser {
             DateTimeFormatter.ofPattern("MMM dd yyyy");
 
     /**
-     * Parses a string representing a Task and transforms it into an actual Task
-     * (Note: Input validation is NOT proofed against save file editing)
+     * Parses a string representing a Task and transforms it into an actual Task.
+     * (Note: Input validation is NOT proofed against save file editing.)
      *
-     * @param string the string representation of the Task
-     * @return the Task corresponding to that representation
-     * @throws IllegalArgumentException if the stored Task state is invalid
-     * @throws StringIndexOutOfBoundsException if the stored Task state is invalid
-     * @throws DateTimeParseException if the stored Task state is invalid
+     * @param string the string representation of the Task.
+     * @return the Task corresponding to that representation.
+     * @throws IllegalArgumentException if the stored Task state is invalid.
+     * @throws StringIndexOutOfBoundsException if the stored Task state is invalid.
+     * @throws DateTimeParseException if the stored Task state is invalid.
      */
     public Task parseStoredTask(String string)
             throws IllegalArgumentException,
@@ -87,11 +87,11 @@ public class KaiParser {
     }
 
     /**
-     * Parses the command given and takes the appropriate response thereof
+     * Parses the command given and takes the appropriate response thereof.
      *
-     * @param input the string corresponding to the command in question
-     * @param taskList the TaskList some of these commands work on
-     * @return the Command to be invoked later on (might be InvalidCommand at times)
+     * @param input the string corresponding to the command in question.
+     * @param taskList the TaskList some of these commands work on.
+     * @return the Command to be invoked later on (might be InvalidCommand at times).
      */
     public Command parseCommand(String input, TaskList taskList) {
         if (input.equals("bye")) {
@@ -138,10 +138,10 @@ public class KaiParser {
 
     /**
      * Creates a new ListCommand if possible,
-     * and returns InvalidCommand otherwise
+     * and returns InvalidCommand otherwise.
      *
-     * @param taskList the TaskList this command works on
-     * @return the Command that is created
+     * @param taskList the TaskList this command works on.
+     * @return the Command that is created.
      */
     private Command createListCommand(TaskList taskList) {
         return new ListCommand(taskList);
@@ -149,11 +149,11 @@ public class KaiParser {
 
     /**
      * Creates a new FindCommand if possible,
-     * and returns InvalidCommand otherwise
+     * and returns InvalidCommand otherwise.
      *
-     * @param searchTerm the relevant parts of the input
-     * @param taskList the TaskList this command works on
-     * @return the Command that is created
+     * @param searchTerm the relevant parts of the input.
+     * @param taskList the TaskList this command works on.
+     * @return the Command that is created.
      */
     private Command createFindCommand(String searchTerm, TaskList taskList) {
         if (searchTerm.isEmpty()) {
@@ -164,11 +164,11 @@ public class KaiParser {
 
     /**
      * Creates a new MarkCommand if possible,
-     * and returns InvalidCommand otherwise
+     * and returns InvalidCommand otherwise.
      *
-     * @param trimmedIndex the relevant parts of the input
-     * @param taskList the TaskList this command works on
-     * @return the Command that is created
+     * @param trimmedIndex the relevant parts of the input.
+     * @param taskList the TaskList this command works on.
+     * @return the Command that is created.
      */
     private Command createMarkCommand(String trimmedIndex, TaskList taskList) {
         try {
@@ -186,11 +186,11 @@ public class KaiParser {
 
     /**
      * Creates a new UnmarkCommand if possible,
-     * and returns InvalidCommand otherwise
+     * and returns InvalidCommand otherwise.
      *
-     * @param trimmedInput the relevant parts of the input
-     * @param taskList the TaskList this command works on
-     * @return the Command that is created
+     * @param trimmedInput the relevant parts of the input.
+     * @param taskList the TaskList this command works on.
+     * @return the Command that is created.
      */
     private Command createUnmarkCommand(String trimmedInput, TaskList taskList) {
         try {
@@ -207,11 +207,11 @@ public class KaiParser {
 
     /**
      * Creates a new DeleteCommand if possible,
-     * and returns InvalidCommand otherwise
+     * and returns InvalidCommand otherwise.
      *
-     * @param trimmedIndex the relevant parts of the input
-     * @param taskList the TaskList this command works on
-     * @return the Command that is created
+     * @param trimmedIndex the relevant parts of the input.
+     * @param taskList the TaskList this command works on.
+     * @return the Command that is created.
      */
     private Command createDeleteCommand(String trimmedIndex, TaskList taskList) {
         try {
@@ -228,11 +228,11 @@ public class KaiParser {
 
     /**
      * Creates a new ToDoCommand if possible,
-     * and returns InvalidCommand otherwise
+     * and returns InvalidCommand otherwise.
      *
-     * @param trimmedInput the relevant parts of the input
-     * @param taskList the TaskList this command works on
-     * @return the Command that is created
+     * @param trimmedInput the relevant parts of the input.
+     * @param taskList the TaskList this command works on.
+     * @return the Command that is created.
      */
     private Command createToDoCommand(String trimmedInput, TaskList taskList) {
         if (trimmedInput.isEmpty()) {
@@ -243,11 +243,11 @@ public class KaiParser {
 
     /**
      * Creates a new DeadlineCommand if possible,
-     * and returns InvalidCommand otherwise
+     * and returns InvalidCommand otherwise.
      *
-     * @param trimmedInput the relevant parts of the input
-     * @param taskList the TaskList this command works on
-     * @return the Command that is created
+     * @param trimmedInput the relevant parts of the input.
+     * @param taskList the TaskList this command works on.
+     * @return the Command that is created.
      */
     private Command createDeadlineCommand(String trimmedInput, TaskList taskList) {
         if (!trimmedInput.contains(" /by ")) {
@@ -272,11 +272,11 @@ public class KaiParser {
 
     /**
      * Creates a new EventCommand if possible,
-     * and returns InvalidCommand otherwise
+     * and returns InvalidCommand otherwise.
      *
-     * @param trimmedInput the relevant parts of the input
-     * @param taskList the TaskList this command works on
-     * @return the Command that is created
+     * @param trimmedInput the relevant parts of the input.
+     * @param taskList the TaskList this command works on.
+     * @return the Command that is created.
      */
     private Command createEventCommand(String trimmedInput, TaskList taskList) {
         if (!(trimmedInput.contains(" /from ") && trimmedInput.contains(" /to "))

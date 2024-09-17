@@ -5,7 +5,7 @@ import kai.commands.ExitCommand;
 import kai.ui.Ui;
 
 /**
- * Kai is the main control logic for chatbot functionality
+ * Kai is the main control logic for chatbot functionality.
  */
 public class Kai {
     private final Ui ui;
@@ -15,9 +15,9 @@ public class Kai {
     private boolean shouldRun = true;
 
     /**
-     * Constructor for the main chatbot class
+     * Constructor for the main chatbot class.
      *
-     * @param filePath where the Tasks are stored on disk
+     * @param filePath where the Tasks are stored on disk.
      */
     public Kai(String filePath) {
         ui = new Ui();
@@ -28,7 +28,7 @@ public class Kai {
 
     /**
      * Gets the startup message (including warnings or errors)
-     * for the application to be displayed through the GUI
+     * for the application to be displayed through the GUI.
      */
     public String getStartupMessage() {
         ui.showWelcomeMessage();
@@ -36,7 +36,7 @@ public class Kai {
     }
 
     /**
-     * Runs the appropriate Command and then gets the response to output
+     * Runs the appropriate Command and then gets the response to output.
      */
     public String getResponse(String input) {
         Command command = parser.parseCommand(input, tasks);
@@ -50,9 +50,9 @@ public class Kai {
     }
 
     /**
-     * A method to check if the program should continue running
+     * A method to check if the program should continue running.
      *
-     * @return whether the entire program should terminate
+     * @return whether the entire program should terminate.
      */
     public boolean continueRunning() {
         return shouldRun;

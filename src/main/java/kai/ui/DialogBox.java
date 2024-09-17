@@ -27,10 +27,10 @@ public class DialogBox extends HBox {
 
 
     /**
-     * Constructs a Dialog box with the text and image to display
+     * Constructs a Dialog box with the text and image to display.
      *
-     * @param text the text in question
-     * @param img the image in question
+     * @param text the text in question.
+     * @param img the image in question.
      */
     private DialogBox(String text, Image img) {
         try {

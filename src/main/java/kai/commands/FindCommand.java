@@ -9,7 +9,7 @@ import kai.ui.Ui;
 
 /**
  * This Command finds and displays the Tasks in the TaskList
- * whose descriptions match the String that is given
+ * whose descriptions match the String that is given.
  */
 public class FindCommand extends Command {
     private final TaskList taskList;
@@ -17,10 +17,10 @@ public class FindCommand extends Command {
 
     /**
      * Constructs a FindCommand with the TaskList to search
-     * and the search term in question
+     * and the search term in question.
      *
-     * @param taskList the TaskList to be searched
-     * @param searchTerm the term to be searched for in the Task's descriptions
+     * @param taskList the TaskList to be searched.
+     * @param searchTerm the term to be searched for in the Task's description.
      */
     public FindCommand(TaskList taskList, String searchTerm) {
         this.taskList = taskList;

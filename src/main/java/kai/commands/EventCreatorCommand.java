@@ -8,9 +8,9 @@ import kai.ui.Ui;
 
 
 /**
- * This Command creates an Event and adds it to the TaskList
- * It is immediately implemented as one-use
- * to avoid potential re-use issues down the line
+ * This Command creates an Event and adds it to the TaskList.
+ * It is immediately implemented as one-use,
+ * to avoid potential re-use issues down the line.
  */
 public class EventCreatorCommand extends Command {
     private boolean isInvoked = false;
@@ -21,12 +21,12 @@ public class EventCreatorCommand extends Command {
 
     /**
      * Constructs a CreateEventCommand which creates an Event when invoked
-     * and adds it to the taskList afterward
+     * and adds it to the taskList afterward.
      *
-     * @param taskList the TaskList the Task will be added to
-     * @param desc the description of the Event
-     * @param from the start date of the Event, in LocalDate format
-     * @param to the end date of the Event, in LocalDate format
+     * @param taskList the TaskList the Task will be added to.
+     * @param desc the description of the Event.
+     * @param from the start date of the Event, in LocalDate format.
+     * @param to the end date of the Event, in LocalDate format.
      */
     public EventCreatorCommand(TaskList taskList, String desc, LocalDate from, LocalDate to) {
         this.taskList = taskList;

@@ -1,8 +1,8 @@
 package kai.tasks;
 
 /**
- * Framework for a Task for the rest of the chatbot to work with
- * Marked as abstract for easy inheritance for other subclasses
+ * Framework for a Task for the rest of the chatbot to work with.
+ * Marked as abstract for easy inheritance for other subclasses.
  */
 public abstract class Task {
     private final String desc;
@@ -10,9 +10,9 @@ public abstract class Task {
 
     /**
      * Constructs a Task with the relevant description,
-     * marking it as incomplete at the start
+     * marking it as incomplete at the start.
      *
-     * @param desc the description of the Task
+     * @param desc the description of the Task.
      */
     public Task(String desc) {
         assert !desc.isEmpty();
@@ -21,14 +21,14 @@ public abstract class Task {
     }
 
     /**
-     * Marks the task as complete (even if the task is already complete)
+     * Marks the task as complete (even if the task is already complete).
      */
     public final void setComplete() {
         isComplete = true;
     }
 
     /**
-     * Marks the task as incomplete (even if the task is currently incomplete)
+     * Marks the task as incomplete (even if the task is currently incomplete).
      */
     public final void setIncomplete() {
         isComplete = false;
@@ -39,9 +39,10 @@ public abstract class Task {
     }
 
     /**
-     * Ensures that classes that inherit can have its state preserved by Storage for later recreation
+     * Ensures that classes that inherit can have its state
+     * preserved by Storage for later recreation.
      *
-     * @return String that can be parsed by Storage to recreate the Task
+     * @return String that can be parsed by Storage to recreate the Task.
      */
     public String serialize() {
         return (isComplete ? 1 : 0) + " | " + desc;

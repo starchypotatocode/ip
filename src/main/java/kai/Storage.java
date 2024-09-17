@@ -12,15 +12,15 @@ import kai.tasks.Task;
 import kai.ui.Ui;
 
 /**
- * Storage handles the storage and retrieval of Tasks
+ * Storage handles the storage and retrieval of Tasks.
  */
 public class Storage {
     private final String filePath;
 
     /**
-     * Constructs Storage with the appropriate path to retrieve or store Tasks in
+     * Constructs Storage with the appropriate path to retrieve or store Tasks in.
      *
-     * @param filePath the path of the file the Task states are found in
+     * @param filePath the path of the file the Task states are found in.
      */
     public Storage(String filePath) {
         assert !filePath.isEmpty();
@@ -28,11 +28,11 @@ public class Storage {
     }
 
     /**
-     * Loads all the Tasks found in the file to memory
+     * Loads all the Tasks found in the file to memory.
      *
-     * @param parser the KaiParser that is used to parse the input
-     * @param ui the Ui that is used to display messages
-     * @return ArrayList of Tasks appropriately configured
+     * @param parser the KaiParser that is used to parse the input.
+     * @param ui the Ui that is used to display messages.
+     * @return ArrayList of Tasks appropriately configured.
      */
     public ArrayList<Task> load(KaiParser parser, Ui ui) {
         try {
@@ -81,9 +81,9 @@ public class Storage {
     }
 
     /**
-     * Saves the current Tasks to the file on disk
+     * Saves the current Tasks to the file on disk.
      *
-     * @param tasks the Tasks to be saved
+     * @param tasks the Tasks to be saved.
      */
     public void save(TaskList tasks) {
         try {

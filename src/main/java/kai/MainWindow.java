@@ -30,7 +30,7 @@ public class MainWindow extends AnchorPane {
     private Image kaiImage = new Image(this.getClass().getResourceAsStream("/images/KaiProfile.png"));
 
     /**
-     * Initializes the window with part of its required bindings
+     * Initializes the window with part of its required bindings.
      */
     @FXML
     public void initialize() {
@@ -38,9 +38,9 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
-     * Injects the Kai instance in this class, and displays the startup message
+     * Injects the Kai instance in this class, and displays the startup message.
      *
-     * @param k the Kai instance in questions
+     * @param k the Kai instance in question.
      */
     public void initializeWithKai(Kai k) {
         kai = k;

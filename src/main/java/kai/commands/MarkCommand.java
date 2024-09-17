@@ -5,7 +5,7 @@ import kai.ui.Ui;
 
 
 /**
- * This Command marks the Task given as complete
+ * This Command marks the Task given as complete.
  * Can be modified as one-use later on if needed?
  */
 public class MarkCommand extends Command {
@@ -13,9 +13,9 @@ public class MarkCommand extends Command {
 
     /**
      * Constructs MarkCommand with the relevant Task
-     * it needs to be applied to
+     * it needs to be applied to.
      *
-     * @param task the Task that needs to be marked complete
+     * @param task the Task that needs to be marked complete.
      */
     public MarkCommand(Task task) {
         this.task = task;

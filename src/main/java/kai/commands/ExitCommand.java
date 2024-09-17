@@ -3,7 +3,7 @@ package kai.commands;
 import kai.ui.Ui;
 
 /**
- * This Command causes the chatbot to exit
+ * This Command causes the chatbot to exit.
  */
 public class ExitCommand extends Command {
 

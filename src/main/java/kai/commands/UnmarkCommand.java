@@ -5,7 +5,7 @@ import kai.ui.Ui;
 
 
 /**
- * This Command marks the Task given as incomplete
+ * This Command marks the Task given as incomplete.
  * Can be modified as one-use later on if needed?
  */
 public class UnmarkCommand extends Command {
@@ -13,9 +13,9 @@ public class UnmarkCommand extends Command {
 
     /**
      * Constructs UnmarkCommand with the relevant Task
-     * it needs to be applied to
+     * it needs to be applied to.
      *
-     * @param task the Task that needs to be marked incomplete
+     * @param task the Task that needs to be marked incomplete.
      */
     public UnmarkCommand(Task task) {
         this.task = task;
