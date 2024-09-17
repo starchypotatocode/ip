@@ -7,18 +7,15 @@ so that you can generate new ones without worrying about forgetting.
 
 Below are the supported commands and their explanation:
 
-### Adding deadlines
+### Listing the current Tasks
 
-// Describe the action and its outcome.
+This Command lists out the current Tasks if any.
 
-// Give examples of usage
+Example Command: `list`
 
-Example: `keyword (optional arguments)`
-
-// A description of the expected outcome goes here
-
+However, if there are no Tasks in the list the output will be something like this:
 ```
-expected output
+There are no tasks to list. Congratulations!
 ```
 
 ## Feature ABC
