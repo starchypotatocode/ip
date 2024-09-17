@@ -1,36 +1,44 @@
 package kai.commands;
 
+import java.time.LocalDate;
+
 import kai.TaskList;
-import kai.tasks.ToDo;
+import kai.tasks.Event;
 import kai.ui.Ui;
 
 
 /**
- * This Command creates an ToDo and adds it to the TaskList.
+ * This Command creates an Event and adds it to the TaskList.
  * It is immediately implemented as one-use,
  * to avoid potential re-use issues down the line.
  */
-public class ToDoCreatorCommand extends Command {
+public class EventCommandCreator extends Command {
     private boolean isInvoked = false;
     private final TaskList taskList;
     private final String desc;
+    private final LocalDate from;
+    private final LocalDate to;
 
     /**
-     * Constructs an CreateToDoCommand which creates a ToDo when invoked
+     * Constructs a CreateEventCommand which creates an Event when invoked
      * and adds it to the taskList afterward.
      *
      * @param taskList the TaskList the Task will be added to.
-     * @param desc the description of the ToDo.
+     * @param desc the description of the Event.
+     * @param from the start date of the Event, in LocalDate format.
+     * @param to the end date of the Event, in LocalDate format.
      */
-    public ToDoCreatorCommand(TaskList taskList, String desc) {
+    public EventCommandCreator(TaskList taskList, String desc, LocalDate from, LocalDate to) {
         this.taskList = taskList;
         this.desc = desc;
+        this.from = from;
+        this.to = to;
     }
 
     @Override
     public void invoke(Ui ui) {
         if (!isInvoked) {
-            ToDo task = new ToDo(desc);
+            Event task = new Event(desc, from, to);
             boolean success = taskList.add(task);
             if (success) {
                 ui.showCreateTaskCommandResults(taskList);

@@ -12,7 +12,7 @@ import kai.ui.Ui;
  * It is immediately implemented as one-use,
  * to avoid potential re-use issues down the line.
  */
-public class DeadlineCreatorCommand extends Command {
+public class DeadlineCommandCreator extends Command {
     private boolean isInvoked = false;
     private final TaskList taskList;
     private final String desc;
@@ -26,7 +26,7 @@ public class DeadlineCreatorCommand extends Command {
      * @param desc the description of the Deadline.
      * @param deadline the deadline in the Deadline, in LocalDate format.
      */
-    public DeadlineCreatorCommand(TaskList taskList, String desc, LocalDate deadline) {
+    public DeadlineCommandCreator(TaskList taskList, String desc, LocalDate deadline) {
         this.taskList = taskList;
         this.desc = desc;
         this.deadline = deadline;

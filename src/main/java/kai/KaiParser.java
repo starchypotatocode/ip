@@ -5,15 +5,15 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import kai.commands.Command;
-import kai.commands.DeadlineCreatorCommand;
+import kai.commands.DeadlineCommandCreator;
 import kai.commands.DeleteCommand;
-import kai.commands.EventCreatorCommand;
+import kai.commands.EventCommandCreator;
 import kai.commands.ExitCommand;
 import kai.commands.FindCommand;
 import kai.commands.InvalidCommand;
 import kai.commands.ListCommand;
 import kai.commands.MarkCommand;
-import kai.commands.ToDoCreatorCommand;
+import kai.commands.ToDoCommandCreator;
 import kai.commands.UnmarkCommand;
 import kai.tasks.Deadline;
 import kai.tasks.Event;
@@ -232,7 +232,7 @@ public class KaiParser {
         if (trimmedInput.isEmpty()) {
             return new InvalidCommand("\t The todo command must have a name for the task.");
         }
-        return new ToDoCreatorCommand(taskList, trimmedInput);
+        return new ToDoCommandCreator(taskList, trimmedInput);
     }
 
     /**
@@ -255,7 +255,7 @@ public class KaiParser {
         try {
             LocalDate deadline = LocalDate.parse(
                     trimmedInput.substring(trimmedInput.indexOf(" /by ") + 5), INPUT_FORMATTER);
-            return new DeadlineCreatorCommand(taskList, desc, deadline);
+            return new DeadlineCommandCreator(taskList, desc, deadline);
         } catch (DateTimeParseException e) {
             return new InvalidCommand("\t The input dates could not be parsed:"
                     + System.lineSeparator()
@@ -294,7 +294,7 @@ public class KaiParser {
                 return new InvalidCommand("\t The start date of the event"
                         + " needs to be before or equal to the end date!");
             }
-            return new EventCreatorCommand(taskList, desc, from, to);
+            return new EventCommandCreator(taskList, desc, from, to);
         } catch (DateTimeParseException e) {
             return new InvalidCommand("\t The input dates could not be parsed:" + System.lineSeparator()
                     + "\t Did you follow the format of yyyy-MM-dd and pad 0s in front (eg: 2019-09-15)?");
