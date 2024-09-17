@@ -23,7 +23,7 @@ public class Kai {
         ui = new Ui();
         storage = new Storage(filePath);
         parser = new KaiParser();
-        tasks = new TaskList(storage.load(parser, ui));
+        tasks = new TaskList(storage.loadAllTasks(parser, ui));
     }
 
     /**

@@ -13,12 +13,12 @@ import kai.tasks.ToDo;
 
 public class KaiParserTest {
     private static final DateTimeFormatter INPUT_FORMATTER =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Relevant tests not implemented yet
     private static final DateTimeFormatter STORAGE_FORMATTER =
             DateTimeFormatter.ofPattern("MMM dd yyyy");
 
     @Test
-    public void parseStoredTask_validTasks() {
+    public void parseStoredTask_validToDos() {
         ToDo toDo1 = new ToDo(" ");
         ToDo toDo2 = new ToDo("woof");
         assertEquals(new KaiParser().parseStoredTask("T | 0 |  "), toDo1);
@@ -28,7 +28,10 @@ public class KaiParserTest {
         toDo2.setComplete();
         assertEquals(new KaiParser().parseStoredTask("T | 1 |  "), toDo1);
         assertEquals(new KaiParser().parseStoredTask("T | 1 | woof"), toDo2);
+    }
 
+    @Test
+    public void parseStoredTask_validDeadlines() {
         Deadline deadline1 = new Deadline(" ", LocalDate.of(2015, 3, 16));
         Deadline deadline2 = new Deadline("Jump", LocalDate.of(2000, 5, 5));
         assertEquals(new KaiParser().parseStoredTask("D | 0 |   | "
@@ -42,7 +45,10 @@ public class KaiParserTest {
                 + LocalDate.of(2015, 3, 16).format(STORAGE_FORMATTER)), deadline1);
         assertEquals(new KaiParser().parseStoredTask("D | 1 | Jump | "
                 + LocalDate.of(2000, 5, 5).format(STORAGE_FORMATTER)), deadline2);
+    }
 
+    @Test
+    public void parseStoredTask_validEvents() {
         Event event1 = new Event("0", LocalDate.of(2013, 7, 16),
                 LocalDate.of(2013, 7, 16));
         Event event2 = new Event("BARK", LocalDate.of(2000, 5, 5),
