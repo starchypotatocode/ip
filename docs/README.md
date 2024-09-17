@@ -1,12 +1,13 @@
 # Kai User Guide
 
-// Update the title above to match the actual product name
+![Kai Chatbot Screenshot](Ui.png)
 
-// Product screenshot goes here
+Kai is a chatbot designed to help you get ideas out of your mind,
+so that you can generate new ones without worrying about forgetting.
 
-// Product intro goes here
+Below are the supported commands and their explanation:
 
-## Adding deadlines
+### Adding deadlines
 
 // Describe the action and its outcome.
 
