@@ -5,7 +5,7 @@
 Kai is a chatbot designed to help you get ideas out of your mind,
 so that you can generate new ones without worrying about forgetting the old ones.
 
-Below are the supported commands and their explanation:
+Below are the supported commands and their explanations:
 
 ## Listing the current Tasks
 
@@ -99,10 +99,10 @@ There is now 3 task(s) in the list.
 
 ### Deadline
 
-This Command adds a new Event Task to the list with the specified description and date.\
+This Command adds a new Deadline Task to the list with the specified description and date.\
 Note that the date needs to be in YYYY-MM-DD format to be accepted.
 
-Format: `event [description] /by [date]`\
+Format: `deadline [description] /by [date]`\
 Example: `deadline Thesis /by 2025-01-11`
 
 Sample Output:
@@ -114,7 +114,7 @@ There is now 4 task(s) in the list.
 
 ## Delete Task
 
-This Command delete the Task in the specified index.\
+This Command deletes the Task in the specified index.\
 The valid range of numbers start from 1 up to the number of tasks that are in the chatbot.\
 (This Command will not work if there are no Tasks present)
 
